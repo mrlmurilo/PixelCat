@@ -3,22 +3,20 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        height: 100em;
+        min-height: 100vh;
+        position: relative; /* Adiciona a posição relativa ao body */
     }
+
     header {
         background-color: #333;
         color: #fff;
         padding: 20px;
     }
-    footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
+
     main {
         padding: 20px;
     }
+
     .product {
         display: inline-block;
         width: 200px;
@@ -30,16 +28,20 @@
         margin-right: 50px;
         margin-bottom: 30px;
     }
+
     .product img {
         width: 150px;
         height: 150px;
     }
+
     .product h3 {
         margin-top: 10px;
     }
+
     .product p {
         color: #888;
     }
+
     .product button {
         margin-top: 10px;
         background-color: #333;
@@ -50,6 +52,7 @@
         border-radius: 6px;
         transition: 0.3s;
     }
+
     .product button:hover {
         padding: 12px;
     }
@@ -61,7 +64,18 @@
         margin-right: 10px;
         transition: 0.3s;
     }
+
     a:hover {
         font-size: 25px;
         background-color: rgba(0, 0, 0, 0.481);
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: fixed; /* Define o posicionamento fixo */
+        bottom: 0; /* Cola o footer na parte inferior */
+        width: 100%; /* Define a largura total do footer */
     }
