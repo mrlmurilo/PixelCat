@@ -1,4 +1,4 @@
-<h1>Documentação/h1>
+<h1>Documentação</h1>
   - DER
   - Diagrama de Classes
   - Diagrama de Caso de Uso
