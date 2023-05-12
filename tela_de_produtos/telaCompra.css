@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    display: inline-block;
+  }
+
+.item {
+    display: inline-block;
+    text-align: start;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    height: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+a:hover {
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.481);
+}
