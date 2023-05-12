@@ -1,8 +1,8 @@
 <h1>Documentação</h1>
   - DER
-  - <br>
+  <br>
   - Diagrama de Classes
-  - <br>
+  <br>
   - Diagrama de Caso de Uso
-  - <br>
+  <br>
   - Requisitos Funcionais e Não-Funcionais
