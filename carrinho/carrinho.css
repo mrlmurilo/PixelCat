@@ -5,12 +5,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: rgba(128, 0, 128, 0.5);
 }
 
 .cart-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.404);
+    border-radius: 20px;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.514);
 }
 
 table {
