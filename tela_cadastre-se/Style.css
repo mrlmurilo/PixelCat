@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'JK Abode';
+    src: url('../Fontes/JK_Abode/JKAbode-Demo.ttf') format('truetype');
+}
+
+h1 {
+    font-family: "JK Abode";
+    color: white;
+}
+
+body{
+    background-color: #27262C;
+}
+.painel-de-cadastro{
+    background-color: #745fdd;
+    margin-left: 25%;
+}
