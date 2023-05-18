@@ -1,14 +1,16 @@
 @font-face {
-    font-family: 'JK Abode';
-    src: url('../Fontes/JK_Abode/JKAbode-Demo.ttf') format('truetype');
+    font-family: 'Retro_Gaming';
+    src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
 }
-
+#cor2{
+    color: green;
+}
 h1 {
-    font-family: "JK Abode";
-    color: white;
+    font-family: "Retro_Gaming";
+    color: pink;
     font-size: 50px;
     margin-bottom: 50px;
-    margin-left: 38%;
+    margin-left: 35%;
 }
 
 body{
@@ -16,19 +18,19 @@ body{
 }
 .painel-de-cadastro{
     background-color: rgb(46, 45, 56);
-    margin-left: 30%;
+    margin-left: 35%;
     width: 400px;
     font-size: 25px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: left;
     padding: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 5px 10px 40px rgba(7, 7, 7, 0.514);
     color: white;
     padding-left: 50px;
     padding-right: 50px;
 }
-.painel-de-cadastro input{
+.painel-de-cadastro .inserir-texto{
     background-color: rgb(31, 30, 37);
     color: white;
     outline: none;
@@ -38,17 +40,23 @@ body{
     height: 35px;
 }
 
-button {
-   border: none;
-   color: white;
-   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-   background-color: rgb(0, 0, 225);
-   border-radius: 500px;
-   font-size: 40px;
-   width: 70px;
-   height: 70px;
-   transition: 0.2s;
+#btnCad {
+    border: none;
+    color: white;
+    font-family: "Retro_Gaming";
+    background-color: rgb(76, 219, 47);
+    border-radius: 0;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+    font-size: 40px;
+    width: 300px;
+    height: 70px;
+    transition: background-color 0.2s;
+ }
+ 
+ #btnCad:hover {
+    background-color: rgb(0, 0, 255);
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
 }
-button:hover{
-    width: 190px;
-}
+ 
