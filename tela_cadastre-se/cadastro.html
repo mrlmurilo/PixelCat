@@ -14,23 +14,23 @@
     <div class="painel-de-cadastro">
         <form id="formCad" action="/formulario" method="POST">
             <p>Nome:</p>
-            <input class="inserir-texto" type="text" name="nome_cliente" id="nome_cliente">
+            <input class="inserir-texto" type="text" name="nome_cliente" id="nome_cliente" required>
             <p>Email:</p>
-            <input class="inserir-texto" type="text" name="email_cliente" id="email_cliente">
+            <input class="inserir-texto" type="text" name="email_cliente" id="email_cliente" required>
             <p>CPF:</p>
-            <input class="inserir-texto" type="text" name="cpf_cliente" id="cpf_cliente">
+            <input class="inserir-texto" type="text" name="cpf_cliente" id="cpf_cliente" required>
             <p>Data de Nascimento:</p>
-            <input class="inserir-texto" type="text" name="dataNasc_cliente" id="dataNasc_cliente">
+            <input class="inserir-texto" type="text" name="dataNasc_cliente" id="dataNasc_cliente" required>
             <p>Telefone:</p>
-            <input class="inserir-texto" type="text" name="telefone_cliente" id="telefone_cliente">
+            <input class="inserir-texto" type="text" name="telefone_cliente" id="telefone_cliente" required>
             <p>Endereço:</p>
-            <input class="inserir-texto" type="text" name="endereco_cliente" id="endereco_cliente">
+            <input class="inserir-texto" type="text" name="endereco_cliente" id="endereco_cliente" required>
             <br><br>
-            <input type="button" id="btnCad" value="Cadastrar"></input>
+            <input type="submit" id="btnCad" value="Cadastrar"></input>
         </form>
     </div>
 
-    <script src="cadastro.js"></script>
+    <script src="tela_cadastre-se/cadastro.js"></script>
 </body>
 
 </html>
