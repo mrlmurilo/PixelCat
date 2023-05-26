@@ -26,7 +26,7 @@ app.post('/formulario', (req, res) => {
   const { nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente } = req.body;
 
   // Query para inserir os dados no banco de dados
-  const sql = `INSERT INTO usuarios (nome_cliente, email_cliente, cpf_cliente, ) VALUES ('${nome}', '${email}')`;
+  const sql = `INSERT INTO usuarios (nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente) VALUES ('${nome_cliente}', '${email_cliente}','${cpf_cliente}','${dataNasc_cliente}','${telefone_cliente}','${endereco_cliente}')`;
 
   db.query(sql, (err, result) => {
     if (err) {
