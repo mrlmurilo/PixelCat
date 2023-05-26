@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="cadastro.js"></script>
     <link rel="stylesheet" href="Style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +13,13 @@
 <body>
     <h1>Cadastre<span id="cor2">-se</span></h1>
     <div class="painel-de-cadastro">
-        <form action="get">
+        <form id="form_cadastro" action="/cadastro" method="POST">
             <p>Nome:</p>
             <input class="inserir-texto" type="text" name="nome" id="txtNome">
             <p>Email:</p>
             <input class="inserir-texto" type="text" name="email" id="txtEmail">
             <p>CPF:</p>
-            <input class="inserir-texto" type="text" name="cpf" id="cpf">
+            <input class="inserir-texto" type="text" name="cpf" id="txtCpf">
             <p>Data de Nascimento:</p>
             <input class="inserir-texto" type="text" name="dataNasc" id="txtDataNasc">
             <p>Telefone:</p>
