@@ -1,3 +1,11 @@
+@keyframes shake {
+    0% {margin-left: 0;}
+  25% {margin-left: 2px;}
+  50% {margin-left: 0;}
+  75% {margin-left: -2px;}
+  100% {margin-left: 0;}
+  }
+
 body {
     max-width: 1900px;
     height: 700px;
@@ -87,10 +95,11 @@ body {
 }
 
 header {
+    display: flex;
     background-color: rgb(151, 29, 49);
     color: #fff;
     padding: 15px;
-    height: 150px;
+    height: 120px;
     margin-top: 0px;
     position: fixed;
     width: 100%;
@@ -99,21 +108,41 @@ header {
     transition: height 0.3s ease-in-out;
 }
 
+#user {
+    margin-left: 450px;
+}
+
+#query {
+    margin-top: 30px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 700px;
+    margin-left: 70px;
+    transition: 0.3s;
+}
+
+nav {
+    margin-left: 50px;
+    margin-top: 35px;
+    transition: 0.3s;
+}
+
 nav .tab {
     text-decoration: none;
-    color: white;
     font-size: 20px;
-    margin-right: 10px;
     transition: 0.3s;
     margin-right: 50px;
-    font-size: 25px;
+}
+nav .tab img {
+    width: 50px;
+    transition: 0.3s;
 }
 
 nav .tab:hover {
-    font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.481);
-    padding: 3px;
-    border-radius: 10px;
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
 }
 
 .logo {
@@ -134,15 +163,32 @@ footer {
 }
 
 header.small {
-    height: 70px;
+    height: 60px;
 }
 
 header.small .logo {
     width: 50px;
 }
 
-header.small .tab {
-    font-size: 20px;
+header.small .tab img {
+    width: 30px;
+}
+header.small nav {
+    margin-top: 10px;
+}
+
+header.small #user {
+    margin-left: 550px;
+}
+
+header.small #query {
+        margin-top: 10px;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        width: 600px;
+        margin-left: 250px;
 }
 
 body.scroll-down .header {
