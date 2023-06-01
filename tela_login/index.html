@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
+        .logo {
+            width: 200px;
+        }
         body {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788), #202020), url("../img/re2bk.jpg");
+            background-color: #202020;
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,20 +22,22 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 250px;
+            margin-top: 50px;
             padding: 0 50px;
         }
 
         .formulario-login {
             max-width: 500px;
-            padding: 30px;
+            padding: 60px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             box-shadow: 0px 0px 30px rgb(0, 0, 0);
+            align-content: center;
         }
 
         .formulario-login input {
-            width: 100%;
+            width: 500px;
+            height: 40px;
             padding: 15px;
             margin-bottom: 20px;
             font-size: 18px;
@@ -41,7 +46,7 @@
         }
 
         .formulario-login button {
-            width: 100%;
+            width: 100px;
             padding: 15px;
             font-size: 18px;
             font-weight: bold;
@@ -61,24 +66,35 @@
             font-size: 20px;
             margin-bottom: 40px;
         }
+        .formulario-login h2 {
+            text-align: center;
+            font-size: 35px;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <!-- Logo do site -->
-        <img class="logo" src="caminho/para/logo.png" alt="Logo">
+        <center>
+        <img class="logo" src="../img/LogoRosa.png" alt="Logo">
+        <img class="logo" src="../img/TextoLogoRosa.png" alt="Logo">
+        </center>
     </header>
 
     <div class="container">
         <div class="conteudo-texto">
             <h1>Bem-vindo ao PixelCat!</h1>
-            <p>Faça login para acessar sua conta.</p>
+            <p>A melhor loja de venda de produtos de jogos! <br> De gamers para gamers.</p>
         </div>
 
         <form class="formulario-login" action="/login" method="POST">
+            <h2>Faça o Login</h2>
+            <br><br>
             <input type="email" name="email" placeholder="Email" required>
+            <br><br>
             <input type="password" name="password" placeholder="Senha" required>
+            <br><br>
             <button type="submit">Login</button>
         </form>
     </div>
