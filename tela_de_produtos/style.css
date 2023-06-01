@@ -1,18 +1,28 @@
+@font-face {
+    font-family: 'Retro_Gaming';
+    src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
+}
+
 body {
+    background-color: #202020;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
+.titulo {
+    font-family: Retro_Gaming;
+}
 
 header {
-    background-color: #333;
+    background-color: rgb(151, 29, 49);
     color: #fff;
     padding: 20px;
-    height: 100px;
+    height: 150px;
 }
 
 main {
@@ -54,7 +64,7 @@ h2{
 }
 
 .product button {
-    background-color: #333;
+    background-color: rgb(151, 29, 49);
     color: #fff;
     padding: 15px 20px;
     border: none;
@@ -64,10 +74,10 @@ h2{
 }
 
 .product button:hover {
-    background-color: rgb(96, 0, 96);
+    background-color: rgb(108, 12, 28);
 }
 
-a {
+nav a {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -75,9 +85,11 @@ a {
     transition: 0.3s;
 }
 
-a:hover {
+nav a:hover {
     font-size: 25px;
     background-color: rgba(0, 0, 0, 0.481);
+    padding: 3px;
+    border-radius: 10px;
 }
 
 footer {
@@ -85,4 +97,13 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  nav .tab {
+    margin-right: 50px;
+    font-size: 25px;
   }

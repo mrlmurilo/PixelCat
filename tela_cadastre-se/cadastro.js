@@ -12,6 +12,8 @@ const connection = mysql.createConnection({
   database: 'pixelcats'
 });
 
+
+
 // Conexão com o MySQL
 connection.connect((err) => {
   if (err) throw err;
