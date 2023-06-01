@@ -10,6 +10,7 @@
         .logo {
             width: 200px;
         }
+
         body {
             background-color: #202020;
             color: white;
@@ -19,24 +20,29 @@
         }
 
         .container {
+            margin-top: 100px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding: 0 50px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .conteudo-texto {
+            text-align: center;
+            margin-top: 100px;
         }
 
         .formulario-login {
-            max-width: 500px;
-            padding: 60px;
+            max-width: 600px;
+            padding: 80px 140px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             box-shadow: 0px 0px 30px rgb(0, 0, 0);
-            align-content: center;
+            align-content: left;
+            margin-left: 30px;
         }
 
         .formulario-login input {
-            width: 500px;
+            width: 100%;
             height: 40px;
             padding: 15px;
             margin-bottom: 20px;
@@ -46,7 +52,7 @@
         }
 
         .formulario-login button {
-            width: 100px;
+            width: 100%;
             padding: 15px;
             font-size: 18px;
             font-weight: bold;
@@ -57,10 +63,10 @@
             cursor: pointer;
         }
 
-        .formulario-login button:hover{
+        .formulario-login button:hover {
             transform: scale(1.2);
             transition: 0.3s;
-            background-color: rgb(126, 24, 41);;
+            background-color: rgb(126, 24, 41);
         }
 
         h1 {
@@ -72,9 +78,29 @@
             font-size: 20px;
             margin-bottom: 40px;
         }
+
         .formulario-login h2 {
             text-align: center;
             font-size: 35px;
+        }
+
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 50px;
+            }
+
+            .conteudo-texto {
+                margin-bottom: 20px;
+            }
+
+            .formulario-login {
+                width: 100%;
+                padding: 30px;
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -83,15 +109,15 @@
     <header>
         <!-- Logo do site -->
         <center>
-        <img class="logo" src="../img/LogoRosa.png" alt="Logo">
-        <img class="logo" src="../img/TextoLogoRosa.png" alt="Logo">
+            <img class="logo" src="../img/LogoRosa.png" alt="Logo">
+            <img class="logo" src="../img/TextoLogoRosa.png" alt="Logo">
         </center>
     </header>
 
     <div class="container">
         <div class="conteudo-texto">
             <h1>Bem-vindo ao PixelCat!</h1>
-            <p>A melhor loja de venda de produtos de jogos! <br> De gamers para gamers.</p>
+            <p>A melhor loja de venda de produtos de jogos!<br>De gamers para gamers.</p>
         </div>
 
         <form class="formulario-login" action="/login" method="POST">
