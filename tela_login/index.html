@@ -1,19 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Style.css">
-</head>
-<body>
-    <form action=""></form>
+    <style>
+        body {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788), #202020), url("../img/re2bk.jpg");
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    <h3>Login</h3>
-    <input type="text" placeholder="Insira seu E-mail" id="email">
-    <input type="password" placeholder="Insira sua senhas" id="senha">
-    <input type="submit" placeholder="evniar" id="tnEnviar">
-    <script src="script.js"></script>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 250px;
+            padding: 0 50px;
+        }
+
+        .formulario-login {
+            max-width: 500px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0px 0px 30px rgb(0, 0, 0);
+        }
+
+        .formulario-login input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .formulario-login button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(151, 29, 49);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Logo do site -->
+        <img class="logo" src="caminho/para/logo.png" alt="Logo">
+    </header>
+
+    <div class="container">
+        <div class="conteudo-texto">
+            <h1>Bem-vindo ao PixelCat!</h1>
+            <p>Faça login para acessar sua conta.</p>
+        </div>
+
+        <form class="formulario-login" action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <footer>
+        <!-- Conteúdo do footer -->
+    </footer>
 </body>
+
 </html>

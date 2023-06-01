@@ -1,8 +1,13 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const path = require('path');
 const app = express();
+const port = 4000;
+
+// Middleware para análise do corpo da requisição
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Configurações do MySQL
 const connection = mysql.createConnection({
@@ -12,43 +17,42 @@ const connection = mysql.createConnection({
   database: 'pixelcats'
 });
 
+app.use(express.static(path.join(__dirname, 'tela_cadastre-se')));
 
-
-// Conexão com o MySQL
-connection.connect((err) => {
-  if (err) throw err;
-  console.log('Conectado ao banco de dados MySQL!');
-});
-
-// Configuração do body-parser para receber dados do formulário
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
-
-// Rota para exibir o formulário de cadastro
 app.get('/', (req, res) => {
- // Lê o conteúdo do arquivo HTML externo
- fs.readFile('tela_cadastre-se/cadastro.html', 'utf8', (err, htmlContent) => {
-  if (err) {
-    console.error('Erro ao ler o arquivo HTML:', err);
-    return res.status(500).send('Erro ao processar a requisição');
-  }
-
-  // Envia o conteúdo do arquivo HTML como resposta
-  res.send(htmlContent);
-});
+  const filePath = path.join(__dirname, 'cadastro.html');
+  res.sendFile(filePath);
 });
 
-// Rota para cadastrar os dados no MySQL
+app.get('/login', (req, res) => {
+  
+});
+
+
+// Rota para lidar com o envio do formulário de cadastro
 app.post('/formulario', (req, res) => {
-  const { nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente} = req.body;
-  const sql = `INSERT INTO cliente (nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente) VALUES (?, ?, ?, ?, ?, ?)`;
-  connection.query(sql, [nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente], (err, result) => {
-    if (err) throw err;
-    res.send('Cadastro realizado com sucesso!');
+  // Obtenha os dados do formulário enviados pelo cliente
+  const { nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente } = req.body;
+
+  // Construir a query SQL de inserção
+  const query = `INSERT INTO cliente (nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente) VALUES (?, ?, ?, ?, ?, ?)`;
+
+  // Executar a query SQL para inserir os dados no banco de dados
+  connection.query(query, [nome_cliente, email_cliente, cpf_cliente, dataNasc_cliente, telefone_cliente, endereco_cliente], (err, results) => {
+    if (err) {
+      console.error('Erro ao inserir os dados:', err);
+      res.status(500).send('Erro ao realizar o cadastro');
+    } else {
+      console.log('Dados inseridos com sucesso');
+      res.send('Cadastro realizado com sucesso!');
+      res.redirect('/login');
+      connection.end();
+    }
   });
 });
 
-// Inicia o servidor
-app.listen(3002, () => {
-  console.log('Servidor iniciado na porta 3002');
+// Iniciar o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
 });
+

@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: 'Retro_Gaming';
     src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
-}
+} */
 #cor2{
     color: green;
 }
@@ -12,7 +12,6 @@ h1 {
     margin-bottom: 50px;
     margin-left: 35%;
 }
-
 body{
     background-color: #27262C;
 }
@@ -39,7 +38,6 @@ body{
     width: 99%;
     height: 35px;
 }
-
 #btnCad {
     border: none;
     color: white;
@@ -52,7 +50,6 @@ body{
     height: 70px;
     transition: background-color 0.2s;
  }
- 
  #btnCad:hover {
     background-color: rgb(0, 0, 255);
     transform: scale(1.1);
