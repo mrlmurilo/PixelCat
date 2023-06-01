@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compra de Produto</title>
+  <link rel="stylesheet" type="text/css" href="../css/produto.css">
+</head>
+<body>
+    <header id="top">
+        <a href="#"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
+        <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
+        <nav>
+            <a href="#" class="tab">Início</a>
+            <a href="index.html" class="tab">Produtos</a>
+            <a href="#" class="tab">Carrinho</a>
+        </nav>
+    </header>
+
+  <div class="container">
+    <div class="product-image">
+      <div class="thumbnail-images">
+        <img class="img" src="../img/re2.png" alt="Imagem 1" onclick="changeImage('../img/re2.png')">
+        <img class="img" src="../img/re2_2.jpg" alt="Imagem 2" onclick="changeImage('../img/re2_2.jpg')">
+        <img class="img" src="../img/re2_3.png" alt="Imagem 3" onclick="changeImage('../img/re2_3.png')">
+      </div>
+      <img id="main-image" src="../img/re2.png" alt="Imagem do Produto">
+    </div>
+    <div class="product-details">
+      <h1 class="product-title">STEAM - Resident Evil 2 / BIOHAZARD 2 - Remake</h1>
+      <p class="product-description">Resident Evil 2, chamado no Japão de Biohazard RE:2, é um jogo eletrônico de survival horror desenvolvido e publicado pela Capcom, sendo um remake do jogo original de 1998.</p>
+      <p class="product-stock">Estoque: 10 unidades</p>
+      <p class="product-price">Preço: R$ 99,99</p>
+      <div class="quantity">
+        <label for="quantity-input">Quantidade:</label>
+        <button onclick="decreaseQuantity()" class="btnQtd">-</button>
+        <input type="number" id="quantity-input" value="1" readonly >
+        <button onclick="increaseQuantity()" class="btnQtd">+</button>
+      </div>
+      <div class="action-buttons">
+        <button onclick="buy()" class="btnBuy">Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 PixelCats. Todos os direitos reservados.</p>
+</footer>
+
+  <script src="../script/produto.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+body {
+    max-width: 1900px;
+    height: 700px;
+    overflow-x: hidden;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: 10vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788), #202020), url("../img/re2bk.jpg");
+}
+
+#main-image {
+    width: 500px;
+    height: 700px;
+    position: static;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgb(0, 0, 0);
+}
+
+.container {
+    min-height: calc(100vh - 90px);
+    /* Subtrai a altura do footer */
+    flex-grow: 1;
+    margin-top: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    width: 700px;
+    display: flex;
+    margin-left: 50px;
+}
+
+.thumbnail-images {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.thumbnail-images img {
+    width: 80px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.product-details {
+    margin-left: 20px;
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-description {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.product-stock {
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.quantity {
+    margin-top: 10px;
+}
+
+.quantity input {
+    width: 50px;
+    text-align: center;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+header {
+    background-color: rgb(151, 29, 49);
+    color: #fff;
+    padding: 15px;
+    height: 150px;
+    margin-top: 0px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    transition: height 0.3s ease-in-out;
+}
+
+nav .tab {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+    transition: 0.3s;
+    margin-right: 50px;
+    font-size: 25px;
+}
+
+nav .tab:hover {
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.481);
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 120px;
+    transition: width 0.3s ease-in-out;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    width: 90%;
+    bottom: 0;
+
+}
+
+header.small {
+    height: 70px;
+}
+
+header.small .logo {
+    width: 50px;
+}
+
+header.small .tab {
+    font-size: 20px;
+}
+
+body.scroll-down .header {
+    height: 50px;
+}
+
+.btnQtd {
+    color: white;
+    background-color: rgb(151, 29, 49);
+    outline: none;
+    border: none;
+    border-radius: 100px;
+    width: 50px;
+    padding: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btnBuy {
+    color: white;
+    background-color: rgb(151, 29, 49);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 35px;
+    width: 450px;
+    height: 100px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#quantity-input {
+    background-color: transparent;
+    color: white;
+    border: solid 2px white;
+    text-align: center;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 25px;
+}
+
+.container h1 {
+    font-size: 40px;
+}
+.container p {
+    font-size: 30px;
+}
+
+.product-details {
+    padding-left: 30px;
+}
