@@ -30,8 +30,8 @@ body {
     color: #fff;
     padding: 12px;
     border: none;
-    cursor: pointer;
     border-radius: 6px;
+    cursor: pointer;
     transition: 0.3s;
 }
 .add-to-cart:hover {
