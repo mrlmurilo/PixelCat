@@ -24,31 +24,31 @@ connection.connect((error) => {
 });
 
 app.get('/', (req, res) => {
-    const filePath = path.join(__dirname, 'login.html');
-    res.sendFile(filePath);
-  });
+  const filePath = path.join(__dirname, 'login.html');
+  res.sendFile(filePath);
+});
 
 app.post('/login', (req, res) => {
-    const {email, password} = req.body;
-  
-    const query = 'SELECT * FROM cliente WHERE email_cliente = ? AND senha_cliente = ?';
-    connection.query(query, [email, password], (error, results) => {
-      if (error) {
-        console.error('Erro ao executar a consulta: ', error);
-        res.status(500).send('Erro ao executar a consulta');
-        return;
-      }
-  
-      if (results.length === 0) {
-        res.status(401).send('Credenciais inválidas');
-        return;
-      }
-  
-      res.status(200).send('Login bem-sucedido');
-    });
+  const { email, password } = req.body;
+
+  const query = 'SELECT * FROM cliente WHERE email_cliente = ? AND senha_cliente = ?';
+  connection.query(query, [email, password], (error, results) => {
+    if (error) {
+      console.error('Erro ao executar a consulta: ', error);
+      res.status(500).send('Erro ao executar a consulta');
+      return;
+    }
+
+    if (results.length === 0) {
+      res.status(401).send('Credenciais inválidas');
+      return;
+    }
+
+    res.status(200).send('Login bem-sucedido');
   });
-  
-  // Iniciar o servidor
+});
+
+// Iniciar o servidor
 app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
-  });
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
