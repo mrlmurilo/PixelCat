@@ -2,21 +2,28 @@
     font-family: 'Retro_Gaming';
     src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
 } */
-#cor2{
+#cor2 {
     color: green;
 }
+
 h1 {
-    font-family: "Retro_Gaming";
-    color: pink;
+    color: white;
     font-size: 50px;
     margin-bottom: 50px;
     margin-left: 35%;
 }
-body{
-    background-color: #27262C;
+body {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788), #070707), url("img_login/fundologin.png");
+    background-size: cover;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-.painel-de-cadastro{
-    background-color: rgb(46, 45, 56);
+
+.painel-de-cadastro {
+    background: linear-gradient(to bottom, #222, #333);
+    background-color: #222;
     margin-left: 35%;
     width: 400px;
     font-size: 25px;
@@ -29,7 +36,8 @@ body{
     padding-left: 50px;
     padding-right: 50px;
 }
-.painel-de-cadastro .inserir-texto{
+
+.painel-de-cadastro .inserir-texto {
     background-color: rgb(31, 30, 37);
     color: white;
     outline: none;
@@ -38,6 +46,7 @@ body{
     width: 99%;
     height: 35px;
 }
+
 #btnCad {
     border: none;
     color: white;
@@ -49,11 +58,11 @@ body{
     width: 300px;
     height: 70px;
     transition: background-color 0.2s;
- }
- #btnCad:hover {
+}
+
+#btnCad:hover {
     background-color: rgb(0, 0, 255);
     transform: scale(1.1);
     transition: 0.5s;
     cursor: pointer;
 }
- 
