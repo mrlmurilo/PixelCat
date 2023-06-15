@@ -3,6 +3,30 @@
     src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
 }
 
+
+nav {
+    margin-left: 50px;
+    margin-top: 35px;
+    transition: 0.3s;
+}
+
+nav .tab {
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+    margin-right: 50px;
+}
+
+nav .tab img {
+    width: 50px;
+    transition: 0.3s;
+}
+
+nav .tab:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+}
+
 body {
     background-color: #202020;
     font-family: Arial, sans-serif;
@@ -18,11 +42,53 @@ body {
     font-family: Retro_Gaming;
 }
 
+
+header.small {
+    height: 60px;
+}
+
+header.small .logo {
+    width: 50px;
+}
+
+header.small .tab img {
+    width: 30px;
+}
+
+header.small nav {
+    margin-top: 10px;
+}
+
+header.small #user {
+    margin-left: 550px;
+}
+
+header.small #query {
+    margin-top: 10px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 600px;
+    margin-left: 250px;
+}
+
+body.scroll-down .header {
+    height: 50px;
+}
+
 header {
+    display: flex;
     background-color: rgb(151, 29, 49);
     color: #fff;
-    padding: 20px;
-    height: 150px;
+    padding: 15px;
+    height: 120px;
+    margin-top: 0px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    transition: height 0.3s ease-in-out;
 }
 
 main {
@@ -41,6 +107,8 @@ main {
     margin-right: 50px;
     margin-bottom: 60px;
 }
+
+
 
 h2{
     margin-top: 60px;

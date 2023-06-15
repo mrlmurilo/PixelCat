@@ -1,10 +1,40 @@
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
 @keyframes shake {
-    0% {margin-left: 0;}
-  25% {margin-left: 2px;}
-  50% {margin-left: 0;}
-  75% {margin-left: -2px;}
-  100% {margin-left: 0;}
-  }
+    0% {
+        margin-left: 0;
+    }
+
+    25% {
+        margin-left: 2px;
+    }
+
+    50% {
+        margin-left: 0;
+    }
+
+    75% {
+        margin-left: -2px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 body {
     max-width: 1900px;
@@ -27,6 +57,7 @@ body {
     position: static;
     border-radius: 10px;
     box-shadow: 0px 0px 30px rgb(0, 0, 0);
+    transition: opacity 0.1s ease-in-out;
 }
 
 .container {
@@ -56,6 +87,11 @@ body {
     width: 80px;
     margin: 5px;
     cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.thumbnail-images img:hover {
+    opacity: 0.7;
 }
 
 .product-details {
@@ -110,7 +146,8 @@ header {
 }
 
 #user {
-    margin-left: 450px;
+    position: absolute;
+    right: 5%;
 }
 
 #query {
@@ -136,6 +173,7 @@ nav .tab {
     transition: 0.3s;
     margin-right: 50px;
 }
+
 nav .tab img {
     width: 50px;
     transition: 0.3s;
@@ -174,6 +212,7 @@ header.small .logo {
 header.small .tab img {
     width: 30px;
 }
+
 header.small nav {
     margin-top: 10px;
 }
@@ -183,13 +222,13 @@ header.small #user {
 }
 
 header.small #query {
-        margin-top: 10px;
-        height: 40px;
-        border: none;
-        outline: none;
-        border-radius: 10px;
-        width: 600px;
-        margin-left: 250px;
+    margin-top: 10px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 600px;
+    margin-left: 250px;
 }
 
 body.scroll-down .header {
@@ -209,6 +248,12 @@ body.scroll-down .header {
     font-size: 20px;
 }
 
+
+.btnBuy:hover {
+    background-color: rgb(107, 13, 28);
+    transition: 0.4s;
+}
+
 .btnBuy {
     color: white;
     background-color: rgb(151, 29, 49);
@@ -221,6 +266,7 @@ body.scroll-down .header {
     height: 100px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: 0.4s;
 }
 
 #quantity-input {
@@ -236,6 +282,7 @@ body.scroll-down .header {
 .container h1 {
     font-size: 40px;
 }
+
 .container p {
     font-size: 30px;
 }

@@ -10,13 +10,19 @@
 </head>
 
 <body>
-    <header>
-        <a href="#"><img src="../img/LogoRosa.png" alt="" class="logo"></a>
-        <a href="#"><img src="../img/TextoLogoRosa.png" alt="" class="logo"></a>
+    <header id="top">
+        <a href="../../../tela_de_produtos/produtos.html"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
+        <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
         <nav>
-            <a href="#" class="tab">Início</a>
-            <a href="index.html" class="tab">Produtos</a>
-            <a href="#" class="tab">Carrinho</a>
+            <a href="#" class="tab"><img src="../../../img/icHomeW.png" alt=""></a>
+            <a href="#" class="tab"><img src="../../../img/icStoreW.png" alt=""></a>
+            <a href="#" class="tab"><img src="../../../img/icCartW.png" alt=""></a>
+        </nav>
+        <div class="pesquisa">
+            <input type="text" name="query" id="query">
+        </div>
+        <nav>
+            <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
         </nav>
     </header>
 
@@ -117,10 +123,6 @@
     <p>&copy; 2023 PixelCats. Todos os direitos reservados.</p>
 </footer>
 
-<script>
-    function GoToComprar() {
-        window.location.href = "../tela_compra/telaCompra.html";
-    }
-</script>
+<script src="script.js"></script>
 
 </html>
