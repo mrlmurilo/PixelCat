@@ -37,29 +37,17 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-<<<<<<< HEAD
-=======
-  const filePath = path.join(__dirname, 'login.html');
->>>>>>> 858086fb06b50fcef4ef2a7ddbdbd3f31eef4c46
 
   const query = 'SELECT * FROM cliente WHERE email_cliente = ? AND senha_cliente = ?';
   connection.query(query, [email, password], (error, results) => {
     if (error) {
       console.error('Erro ao executar a consulta: ', error);
       res.status(500).send('Erro ao executar a consulta');
-<<<<<<< HEAD
-=======
-      res.sendFile(filePath);
->>>>>>> 858086fb06b50fcef4ef2a7ddbdbd3f31eef4c46
       return;
     }
 
     if (results.length === 0) {
       res.status(401).send('Credenciais inválidas');
-<<<<<<< HEAD
-=======
-      res.sendFile(filePath);
->>>>>>> 858086fb06b50fcef4ef2a7ddbdbd3f31eef4c46
       return;
     }
 
