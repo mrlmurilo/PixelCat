@@ -43,6 +43,17 @@ body {
     margin-top: 10%;
 }
 
+header #query {
+    margin-top: 40px;
+    margin-right: 300px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 600px;
+    margin-left: 150px;
+}
+
 header.small {
     height: 60px;
 }
@@ -70,7 +81,8 @@ header.small #query {
     outline: none;
     border-radius: 10px;
     width: 600px;
-    margin-left: 250px;
+    margin-left: 200px;
+    margin-right: 100px;
 }
 
 body.scroll-down .header {

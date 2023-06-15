@@ -242,3 +242,31 @@ body.scroll-down .header {
 .product-details {
     padding-left: 30px;
 }
+
+/*CARRINHO*/
+
+.cart-popup {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.526);
+      border: solid black;
+      border-radius: 20px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 300px;
+      background-color: #fff;
+      padding: 20px;
+      display: none;
+  }
+  
+  .cart-content {
+    text-align: center;
+  }
+  
+  .cart-actions {
+    margin-top: 20px;
+  }
+  
+  .cart-actions button {
+    margin: 0 5px;
+  }
+  
