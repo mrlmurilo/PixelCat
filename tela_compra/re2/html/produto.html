@@ -11,7 +11,7 @@
         <nav>
             <a href="#" class="tab"><img src="../../../img/icHomeW.png" alt=""></a>
             <a href="#" class="tab"><img src="../../../img/icStoreW.png" alt=""></a>
-            <a href="#" class="tab"><img src="../../../img/icCartW.png" alt=""></a>
+            <a href="#" class="tab" id="openCartButton"><img src="../../../img/icCartW.png" alt=""></a>
         </nav>
         <div class="pesquisa">
           <input type="text" name="query" id="query">
@@ -45,6 +45,12 @@
         <button onclick="buy()" class="btnBuy">Comprar</button>
       </div>
     </div>
+  </div>
+
+  <div id="cartPopup" class="cart-popup">
+    <h2>Carrinho de Compras</h2>
+    <ul id="cartItemsList"></ul>
+    <button id="closeCartButton">Fechar Carrinho</button>
   </div>
 
   <footer>

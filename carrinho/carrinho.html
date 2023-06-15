@@ -1,36 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <link rel="stylesheet" href="carrinho.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho</title>
+  <style>
+    .cart-container {
+      position: relative;
+    }
+
+    .cart-popup {
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.526);
+      border: solid black;
+      border-radius: 20px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 300px;
+      background-color: #fff;
+      padding: 20px;
+      display: none;
+    }
+
+    .cart-content {
+      text-align: center;
+    }
+
+    .cart-actions {
+      margin-top: 20px;
+    }
+
+    .cart-actions button {
+      margin: 0 5px;
+    }
+  </style>
 </head>
-
-<header>
-    <h1>PixelCats</h1>
-    <nav>
-        <a href="../tela_de_produtos/index.html">Início</a>
-        <a href="../tela_de_produtos/index.html">Produtos</a>
-        <a href="#"><strong>Carrinho</strong></a>
-    </nav>
-</header>
-
 <body>
-    <div class="cart-container">
-        <img src="../tela_de_produtos/img/re2.png" alt="">
-        <div id="cart-text">
-            <h2>(STEAM) Resident Evil 2 Remake</h2>
-            <h3><s>R$ 159,99 </s></h3>
-            <h1 class="price">R$ 99,99</h1>
-            <p>Resident Evil 2, chamado no Japão de Biohazard RE:2, é um jogo eletrônico de survival horror desenvolvido e publicado pela Capcom, sendo um remake do jogo original de 1998.</p>
-            <h4>Estoque: 4</h4>
-            <button class="add-to-cart">Adicionar ao carrinho</button>
-          </div>
+  <div class="cart-container">
+    <button id="openCartButton" onclick="toggleCart()">Abrir Carrinho</button>
 
+    <div id="cartPopup" class="cart-popup">
+      <div class="cart-content">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cartItemsList"></ul>
+        <div class="cart-actions">
+          <button id="checkoutButton">Finalizar Compra</button>
+        </div>
+      </div>
     </div>
-</body>
+  </div>
 
+  <script>
+    function toggleCart() {
+      var cartPopup = document.getElementById('cartPopup');
+      if (cartPopup.style.display === 'block') {
+        cartPopup.style.display = 'none';
+      } else {
+        cartPopup.style.display = 'block';
+      }
+    }
+
+    // Exemplo de adição de itens ao carrinho
+    var items = ['Item 1', 'Item 2', 'Item 3'];
+    var cartItemsList = document.getElementById('cartItemsList');
+
+    items.forEach(function(item) {
+      var li = document.createElement('li');
+      li.textContent = item;
+      cartItemsList.appendChild(li);
+    });
+  </script>
+</body>
 </html>
