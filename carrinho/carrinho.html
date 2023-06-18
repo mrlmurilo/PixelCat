@@ -1,71 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <style>
-    .cart-container {
-      position: relative;
-    }
-
-    .cart-popup {
-      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.526);
-      border: solid black;
-      border-radius: 20px;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 300px;
-      background-color: #fff;
-      padding: 20px;
-      display: none;
-    }
-
-    .cart-content {
-      text-align: center;
-    }
-
-    .cart-actions {
-      margin-top: 20px;
-    }
-
-    .cart-actions button {
-      margin: 0 5px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="carrinho.css">
 </head>
-<body>
-  <div class="cart-container">
-    <button id="openCartButton" onclick="toggleCart()">Abrir Carrinho</button>
 
-    <div id="cartPopup" class="cart-popup">
-      <div class="cart-content">
-        <h2>Carrinho de Compras</h2>
-        <ul id="cartItemsList"></ul>
-        <div class="cart-actions">
-          <button id="checkoutButton">Finalizar Compra</button>
-        </div>
-      </div>
+<body>
+
+  <header id="top">
+    <a href="#"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
+    <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
+    <nav>
+      <a href="#" class="tab"><img src="../../../img/icHomeW.png" alt=""></a>
+      <a href="#" class="tab"><img src="../../../img/icStoreW.png" alt=""></a>
+      <a href="#" class="tab" id="openCartButton"><img src="../../../img/icCartW.png" alt=""></a>
+    </nav>
+    <div class="pesquisa">
+      <input type="text" name="query" id="query">
     </div>
+    <nav>
+      <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
+    </nav>
+  </header>
+
+  <div class="wrap cf">
+    <div class="heading cf">
+      <h1>Carrinho</h1>
+    </div>
+    <div class="cart">
+      <ul class="cartWrap">
+        <li class="items even">
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
+              <p class="itemName">Resident Evil 2 / BIOHAZARD 2</p>
+              <p>
+                <input type="text" class="qty" placeholder="Qtd">
+              </p>
+              <p>$5.00</p>
+            </div>
+            <div class="cartSection removeWrap">
+              <a href="#" class="remove">x</a>
+            </div>
+          </div>
+        </li>
+        <li class="items even">
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
+              <p class="itemName">#QUE-007544-002</p>
+              <p>
+                <input type="text" class="qty" placeholder="Qtd">
+              </p>
+              <p>$5.00</p>
+            </div>
+            <div class="cartSection removeWrap">
+              <a href="#" class="remove">x</a>
+            </div>
+          </div>
+        </li>
+        <li class="items even">
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
+              <p class="itemName">#QUE-007544-002</p>
+                <input type="text" class="qty" placeholder="Qtd">
+                <p>$5.00</p>
+            </div>
+            <div class="cartSection removeWrap">
+              <a href="#" class="remove">x</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="subtotal cf">
+      Total:<br> <span class="price">$75.00</span>
+    </div>
+    <br>
+        <li class="totalRow"><a href="#" class="btn continue">Comprar</a>
+    
   </div>
 
-  <script>
-    function toggleCart() {
-      var cartPopup = document.getElementById('cartPopup');
-      if (cartPopup.style.display === 'block') {
-        cartPopup.style.display = 'none';
-      } else {
-        cartPopup.style.display = 'block';
-      }
-    }
-
-    // Exemplo de adição de itens ao carrinho
-    var items = ['Item 1', 'Item 2', 'Item 3'];
-    var cartItemsList = document.getElementById('cartItemsList');
-
-    items.forEach(function(item) {
-      var li = document.createElement('li');
-      li.textContent = item;
-      cartItemsList.appendChild(li);
-    });
-  </script>
+  <script src="carrinho.js"></script>
 </body>
+
 </html>

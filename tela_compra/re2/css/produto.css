@@ -250,7 +250,6 @@ body.scroll-down .header {
       border: solid black;
       border-radius: 20px;
       position: absolute;
-      top: 100%;
       left: 0;
       width: 300px;
       background-color: #fff;
