@@ -1,28 +1,56 @@
 body {
-    background-color: #202020;
+    background: linear-gradient(to top, #202020, #311111);
     color: white;
 }
 
 h1 {
-    margin-top: 20%;
+    margin-top: 15%;
     text-align: center;
+    margin-bottom: 50px;
 }
 
-.imagens{
+.Conteudo {
+    display: flex;
+}
+
+.front{
+    margin-left: auto;
+    margin-right: 25%;
+}
+
+.back{
+    margin-left: 25%;
+}
+
+.nome {
+    display: flex;
+}
+
+.margonar {
+    margin-left: auto;
+    margin-right: 30%;
+}
+
+.eleoterio {
+    margin-left: 30%;
+}
+
+.imagens {
     margin-left: 10%;
     display: inline;
 }
+
 .Eleoterio {
     width: 50ch;
     height: auto;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgb(151, 29, 49);
     margin-left: 10%;
 }
 
 .Murilo {
     width: 50ch;
     height: auto;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgb(151, 29, 49);
     margin-left: 10%;
 }
 
