@@ -1,7 +1,7 @@
 {
-  "name": "pixelcat",
+  "name": "pixelcats---test-server",
   "version": "1.0.0",
-  "description": "13/05/2023 : criado o banco de dados SQL, vinculado ao SQL\r no mesmo dia foi colocado o banco no servidor AWS e configurado ele pros nossos computadores",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "fs": "^0.0.1-security",
+    "express-session": "^1.17.3",
     "mysql": "^2.18.1",
-    "mysql2": "^3.3.1",
-    "path": "^0.12.7"
+    "nodemailer": "^6.9.3",
+    "popups": "^1.1.3",
+    "request": "^2.88.2",
+    "sweetalert": "^2.1.2"
   }
 }

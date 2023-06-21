@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/checkout.css">
+  </head>
+    <style>
+      
+    </style>
+    <body>
+      <!--GERAR RANDOM KEY-->
+      <% function randomChar() { %>
+        <% const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; %>
+        <% const randomIndex = Math.floor(Math.random() * chars.length); %>
+        <% return chars[randomIndex]; %>
+      <% } %>
+      
+      <% function generateKey() { %>
+        <% let key = ''; %>
+        <% for (let i = 0; i < 3; i++) { %>
+          <% for (let j = 0; j < 5; j++) { %>
+            <% key += randomChar(); %>
+          <% } %>
+          <% if (i !== 2) { %>
+            <% key += '-'; %>
+          <% } %>
+        <% } %>
+        <% return key; %>
+      <% } %>
+      
+      <div class="card">
+      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+        <i class="checkmark">✓</i>
+      </div>
+        <h1>Sucesso!
+        </h1> 
+        <p>Obrigado por realizar a compra conosco! Aqui estão as chaves dos jogos comprados:</p>
+        <ul>
+          <% cart.forEach(function(item) { %>
+            <% for (var i = 0; i < item.quantidade_prod; i++) { %>
+              <li style="list-style: none; font-family: sans-serif;">
+                <h3><%= item.nome_prod %></h3>
+                <p><%= generateKey() %></p>
+              </li>
+            <% } %>
+          <% }) %>
+        </ul>
+        <form method="post" action="/login">
+          <button type="submit">Voltar para o menu</button>
+        </form>
+      </div>
+    </body>
+</html>

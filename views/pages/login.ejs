@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    
+</head>
+
+<body>
+    <header>
+        <!-- Logo do site -->
+        <center>
+            <img class="logo" src="img/LogoRosa.png" alt="Logo">
+            <img class="logo" src="img/TextoLogoRosa.png" alt="Logo">
+        </center>
+    </header>
+
+    <div class="container">
+        <div class="conteudo-texto">
+            <h1>Bem-vindo ao PixelCat!</h1>
+            <p>A melhor loja de venda de produtos de jogos!<br>De gamers para gamers.</p>
+            <img src="img/games.png" alt="">
+        </div>
+
+        <form class="formulario-login" action="/login" method="POST">
+            <h2>Faça o Login!</h2>
+            <br><br>
+            <input type="email" name="email" placeholder="Email" required>
+            <br><br>
+            <input type="password" name="password" placeholder="Senha" required>
+            <br><br>
+            <button type="submit">Login</button>
+            <p>Não tem uma conta? <a href="/tela_de_cadastro" id="link">Comece agora!</a></p>
+        </form>
+        
+    </div>
+
+    <footer>
+        <!-- Conteúdo do footer -->
+    </footer>
+</body>
+
+</html>

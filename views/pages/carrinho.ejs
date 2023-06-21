@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="css/carrinho.css">
+</head>
+
+<body>
+
+  <header id="top">
+    <a href="#"><img src="img/LogoRosa.png" alt="Gato" class="logo"></a>
+    <a href="#"><img src="img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
+    <nav>
+      <a href="#" class="tab"><img src="img/icHomeW.png" alt=""></a>
+      <a href="#" class="tab"><img src="img/icStoreW.png" alt=""></a>
+      <a href="#" class="tab" id="openCartButton"><img src="img/icCartW.png" alt=""></a>
+    </nav>
+    <div class="pesquisa">
+      <input type="text" name="query" id="query">
+    </div>
+    <nav>
+      <a href="#" class="tab"><img src="img/icUserW.png" alt="" id="user"></a>
+    </nav>
+  </header>
+
+  <div class="wrap cf">
+    <div class="heading cf">
+      <h1>Carrinho</h1>
+    </div>
+    <div class="cart">
+      <ul class="cartWrap">
+        <% cart.forEach(function(item) { %>
+        <li class="items even">
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="img/<%= item.imagem_prod %>" alt="" class="itemImg">
+              <p class="itemName"><%= item.nome_prod %></p>
+              <p>
+                <form method="post" action="/edit">
+                  <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                  <input type="submit" value="-" name="decrease" class="btnQtd">
+                  <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
+                  <input type="submit" value="+" name="increase" class="btnQtd">
+                </form>
+              </p>
+                <% if(item.precoDesconto_prod){ %>
+                  <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %></p>
+                <% }else{ %>
+                  <p>R$<%= item.preco_prod * item.quantidade_prod %></p>
+                <% } %>
+            </div>
+            <div class="cartSection removeWrap">
+              <form method="post" action="/remove_product">
+
+                <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                <button type="submit" class="remove" value="Remover">X</button>
+              </form>
+            </div>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="subtotal cf">
+      Total:<br> <input type="text" class="price" maxlength="9" value="R$<%= total %>">
+    </div>
+    <br>
+  </div>
+
+  <div class="payment-form" id="paymentForm">
+    <div class="container">
+      <h1>PAGAMENTO - CARTÂO</h1>
+      <form method="get" action="/checkout">
+        <div class="form-group">
+          <label for="name">Nome no Cartão:</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="card-number">Número do Cartão:</label>
+          <input type="text" id="card-number" required>
+        </div>
+        <div class="form-group">
+          <label for="expiry-date">Data de Vencimento:</label>
+          <input type="text" id="expiry-date"  required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Número de Telefone:</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <button type="submit" class="btn continue">Realizar Pagamento</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
+  <script src="carrinho.js">
+    $(document).ready(function() {
+    $('#expiry-date').inputmask('99/9999');
+  });
+  </script>
+</body>
+
+</html>

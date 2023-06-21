@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+</head>
+
+<body>
+    <h1>Cadastre-se</h1>
+    <div class="painel-de-cadastro">
+        <form id="formCad" action="/register" method="POST">
+            <p>Nome:</p>
+            <input class="inserir-texto" type="text" name="nome_cliente" id="nome_cliente" required>
+            <p>Email:</p>
+            <input class="inserir-texto" type="text" name="email_cliente" id="email_cliente" required>
+            <p>CPF:</p>
+            <input class="inserir-texto" type="text" name="cpf_cliente" id="cpf_cliente" required>
+            <p>Data de Nascimento:</p>
+            <input class="inserir-texto" type="date" name="dataNasc_cliente" id="dataNasc_cliente" required>
+            <p>Telefone:</p>
+            <input class="inserir-texto" type="text" name="telefone_cliente" id="telefone_cliente" required>
+            <p>Endereço:</p>
+            <input class="inserir-texto" type="text" name="endereco_cliente" id="endereco_cliente" required>
+            <p>Senha:</p>
+            <input class="inserir-texto" type="password" name="senha_cliente" id="senha_cliente" required>
+            <p>Confirmar senha:</p>
+            <input class="inserir-texto" type="password" name="confirmar_senha" id="confirmar_senha" required>
+            <br><br>
+            <input type="submit" id="btnCad" value="Cadastrar"></input>
+            <p>Já tem uma conta? <a href="/" id="link">Faça login</a></p>
+        </form>
+    </div>
+
+    <script src="cadastro.js"></script>
+</body>
+
+</html>
