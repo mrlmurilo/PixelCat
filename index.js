@@ -54,16 +54,24 @@ app.get('/', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
+    con.query("SELECT `email_cliente`, `senha_cliente` FROM `cliente`", (err, result) => {
 
-    con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
         if (err) {
-            console.error('Erro ao executar a consulta:', err);
-            res.status(500).send('Erro ao recuperar os produtos');
+            console.error('Erro ao logar:', err);
+            res.status(500).send('Erro ao realizar o login');
         } else {
-            res.render('pages/produtos', { result: result });
+            con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
+                if (err) {
+                    console.error('Erro ao executar a consulta:', err);
+                    res.status(500).send('Erro ao recuperar os produtos');
+                } else {
+                    res.render('pages/produtos', { result: result });
+                }
+            });
         }
     });
 });
+
 
 app.post('/register', function (req, res) {
 
@@ -172,18 +180,18 @@ app.get('/checkout', function (req, res) {
 
     req.session.cart.forEach(function (item) {
         var quantidadeProdutos = parseInt(item.quantidade_prod);
-    
+
         if (quantidadeProdutos > 0) {
-          var query = "UPDATE produto SET estoque_prod = estoque_prod - ? WHERE nome_prod = ?";
-          con.query(query, [quantidadeProdutos, item.nome_prod], function (err, result) {
-            if (err) {
-              console.error("Erro ao atualizar o estoque do produto", item.nome_prod, err);
-            } else {
-              console.log("Estoque do produto", item.nome_prod, "atualizado com sucesso");
-            }
-          });
+            var query = "UPDATE produto SET estoque_prod = estoque_prod - ? WHERE nome_prod = ?";
+            con.query(query, [quantidadeProdutos, item.nome_prod], function (err, result) {
+                if (err) {
+                    console.error("Erro ao atualizar o estoque do produto", item.nome_prod, err);
+                } else {
+                    console.log("Estoque do produto", item.nome_prod, "atualizado com sucesso");
+                }
+            });
         }
-      });
+    });
 
     res.render('pages/checkout', { totalQuantity: totalQuantity, cart: req.session.cart });
     req.session.cart = [];
@@ -192,18 +200,18 @@ app.get('/checkout', function (req, res) {
 
 
 
-app.get('/tela_de_cadastro', function(req,res){
+app.get('/tela_de_cadastro', function (req, res) {
     res.render('pages/cadastro');
 });
 
 app.get('/pesquisar', function (req, res) {
     var searchTerm = req.query.term;
     con.query("SELECT * FROM produto WHERE nome_prod LIKE ?", ['%' + searchTerm + '%'], function (err, result) {
-      if (err) {
-        console.error('Erro ao executar a consulta:', err);
-        res.status(500).send('Erro ao realizar a pesquisa');
-      } else {
-        res.render('pages/pesquisa', { result: result, searchTerm: searchTerm });
-      }
+        if (err) {
+            console.error('Erro ao executar a consulta:', err);
+            res.status(500).send('Erro ao realizar a pesquisa');
+        } else {
+            res.render('pages/pesquisa', { result: result, searchTerm: searchTerm });
+        }
     });
-  });
+});
