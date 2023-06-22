@@ -207,3 +207,7 @@ app.get('/pesquisar', function (req, res) {
       }
     });
   });
+
+  app.get('/sobrenos', function(req,res) {
+    res.render('pages/aboutus');
+  });
