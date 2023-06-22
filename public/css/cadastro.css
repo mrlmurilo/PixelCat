@@ -6,7 +6,7 @@
     color: green;
 }
 
-p{
+p {
     font-weight: bold;
 }
 
@@ -16,6 +16,7 @@ h1 {
     margin-bottom: 50px;
     margin-left: 35%;
 }
+
 body {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788), #070707), url("../img/fundologin.png");
     background-size: cover;
@@ -55,8 +56,8 @@ body {
     transition: 0.5s;
 }
 
-.painel-de-cadastro .inserir-texto:focus{
-    transform: scale(1.2);
+.painel-de-cadastro .inserir-texto:focus {
+    transform: scale(1.1);
     background-color: rgb(75, 74, 83);
     transition: 0.5s;
     font-size: large;
@@ -81,7 +82,7 @@ body {
 }
 
 #btnCad:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background-color: #7e1829;
     transition: 0.3s;
     cursor: pointer;
@@ -89,14 +90,4 @@ body {
 
 .painel-de-cadastro p {
     margin: 0;
-}
-
-#cpf_cliente {
-    float: left;
-    width: 45%;
-}
-
-#dataNasc_cliente {
-    float: right;
-    width: 45%;
 }
