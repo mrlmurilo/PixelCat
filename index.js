@@ -214,4 +214,8 @@ app.get('/pesquisar', function (req, res) {
             res.render('pages/pesquisa', { result: result, searchTerm: searchTerm });
         }
     });
-});
+  });
+
+  app.get('/sobrenos', function(req,res) {
+    res.render('pages/aboutus');
+  });

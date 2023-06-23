@@ -33,35 +33,39 @@
     <div class="cart">
       <ul class="cartWrap">
         <% cart.forEach(function(item) { %>
-        <li class="items even">
-          <div class="infoWrap">
-            <div class="cartSection">
-              <img src="img/<%= item.imagem_prod %>" alt="" class="itemImg">
-              <p class="itemName"><%= item.nome_prod %></p>
-              <p>
+          <li class="items even">
+            <div class="infoWrap">
+              <div class="cartSection">
+                <img src="img/<%= item.imagem_prod %>" alt="" class="itemImg">
+                <p class="itemName">
+                  <%= item.nome_prod %>
+                </p>
+                <p>
                 <form method="post" action="/edit">
                   <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
                   <input type="submit" value="-" name="decrease" class="btnQtd">
                   <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
                   <input type="submit" value="+" name="increase" class="btnQtd">
                 </form>
-              </p>
+                </p>
                 <% if(item.precoDesconto_prod){ %>
-                  <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %></p>
-                <% }else{ %>
-                  <p>R$<%= item.preco_prod * item.quantidade_prod %></p>
-                <% } %>
-            </div>
-            <div class="cartSection removeWrap">
-              <form method="post" action="/remove_product">
+                  <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %>
+                  </p>
+                  <% }else{ %>
+                    <p>R$<%= item.preco_prod * item.quantidade_prod %>
+                    </p>
+                    <% } %>
+              </div>
+              <div class="cartSection removeWrap">
+                <form method="post" action="/remove_product">
 
-                <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
-                <button type="submit" class="remove" value="Remover">X</button>
-              </form>
+                  <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                  <button type="submit" class="remove" value="Remover">X</button>
+                </form>
+              </div>
             </div>
-          </div>
-        </li>
-        <% }) %>
+          </li>
+          <% }) %>
       </ul>
     </div>
     <div class="subtotal cf">
@@ -84,7 +88,7 @@
         </div>
         <div class="form-group">
           <label for="expiry-date">Data de Vencimento:</label>
-          <input type="text" id="expiry-date"  required>
+          <input type="text" id="expiry-date" required>
         </div>
         <div class="form-group">
           <label for="cvv">CVV:</label>
@@ -102,10 +106,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
   <script src="carrinho.js">
-    $(document).ready(function() {
-    $('#expiry-date').inputmask('99/9999');
-  });
+    $(document).ready(function () {
+      $('#expiry-date').inputmask('99/9999');
+    });
   </script>
 </body>
+
+<footer>
+  <p>&copy; 2023 PixelCats. Todos os direitos reservados.</p><br>
+  <a class="aboutus" href="/sobrenos">Desenvolvedores do projeto </a>
+</footer>
 
 </html>
