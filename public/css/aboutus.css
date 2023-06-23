@@ -171,7 +171,7 @@ body.scroll-down .header {
         align-items: center;
         margin-bottom: 30px;
     }
-
+        
     .perfil img {
         margin-right: 0;
         margin-bottom: 20px;
@@ -208,4 +208,9 @@ body.scroll-down .header {
 
     header.small #query {
         width: 70%;
+    }
+
+    #Murilo:hover{
+        transform: scale(1.2);
+        transition: 1s;
     }

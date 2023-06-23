@@ -21,7 +21,7 @@
         <div class="pesquisa">
             <form method="get" action="/pesquisar">
                 <input type="text" name="term" id="term">
-                <button  type="submit">Pesquisar</button>
+                <button type="submit">Pesquisar</button>
         </div>
         <nav>
             <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
@@ -31,38 +31,42 @@
     <main>
         <h2 class="titulo">Resultados da pesquisa para "<%= searchTerm %>":</h2>
         <% result.forEach(function(item) { %>
-              <div class="product">
+            <div class="product">
                 <img src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
-                 <h3>
-                 <%= item.nome_prod %>
-                 </h3>
-                 <p>Plataforma: <%= item.plataforma_prod %></p>
-                     <% if(item.precoDesconto_prod){ %>
-                         <p style="text-decoration: line-through;">R$<%= item.preco_prod%></p>
-                         <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
+                <h3>
+                    <%= item.nome_prod %>
+                </h3>
+                <p>Plataforma: <%= item.plataforma_prod %>
+                </p>
+                <% if(item.precoDesconto_prod){ %>
+                    <p style="text-decoration: line-through;">R$<%= item.preco_prod%>
+                    </p>
+                    <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
                     <% }else{ %>
-                     <h3>R$<%= item.preco_prod %></h3>
-                     <% } %>
-                     </h3>
-                 <form action="/add" method="post">
-                     <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
-                     <input type="hidden" name="nome_prod" value="<%= item.nome_prod %>">
-                     <input type="hidden" name="preco_prod" value="<%= item.preco_prod %>">
-                     <input type="hidden" name="precoDesconto_prod" value="<%= item.precoDesconto_prod %>">
-                     <input type="hidden" name="plataforma_prod" value="<%= item.plataforma_prod %>">
-                     <input type="hidden" name="imagem_prod" value="<%= item.imagem_prod %>">
-                     <input type="hidden" name="quantidade_prod" value="1">
-                     <input type="submit" value="Adicionar ao carrinho" name="botao" class="botao">
-                 </form>
-                 </div>
-             <% }) %>
+                        <h3>R$<%= item.preco_prod %>
+                        </h3>
+                        <% } %>
+                            </h3>
+                            <form action="/add" method="post">
+                                <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                                <input type="hidden" name="nome_prod" value="<%= item.nome_prod %>">
+                                <input type="hidden" name="preco_prod" value="<%= item.preco_prod %>">
+                                <input type="hidden" name="precoDesconto_prod" value="<%= item.precoDesconto_prod %>">
+                                <input type="hidden" name="plataforma_prod" value="<%= item.plataforma_prod %>">
+                                <input type="hidden" name="imagem_prod" value="<%= item.imagem_prod %>">
+                                <input type="hidden" name="quantidade_prod" value="1">
+                                <input type="submit" value="Adicionar ao carrinho" name="botao" class="botao">
+                            </form>
+            </div>
+            <% }) %>
 
     </main>
 
 </body>
 
 <footer>
-    <p>&copy; 2023 PixelCats. Todos os direitos reservados.</p>
+    <p>&copy; 2023 PixelCats. Todos os direitos reservados.</p><br>
+    <a class="aboutus" href="/sobrenos">Desenvolvedores do projeto </a>
 </footer>
 
 <script src="script.js"></script>
