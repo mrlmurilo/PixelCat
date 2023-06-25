@@ -54,6 +54,10 @@ header #term {
     margin-left: 150px;
 }
 
+#btnPesquisar {
+    display: none;
+}
+
 header.small {
     height: 60px;
 }
@@ -105,7 +109,7 @@ header {
 
 main {
     flex-grow: 1;
-  }
+}
 
 .product {
     display: inline-block;
@@ -122,7 +126,7 @@ main {
 
 
 
-h2{
+h2 {
     margin-top: 60px;
     margin-left: 30px;
     font-size: 30px;
@@ -177,16 +181,16 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
-  }
+}
 
- .logo {
+.logo {
     width: 120px;
-  }
+}
 
-  nav .tab {
+nav .tab {
     margin-right: 50px;
     font-size: 25px;
     background: none;
     border: none;
     cursor: pointer;
-  }
+}

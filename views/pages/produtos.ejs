@@ -8,28 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelCats</title>
 </head>
+<header id="top">
+    <a href="#"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
+    <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
+    <nav>
+        <form action="/login" method="post">
+            <button type="submit" class="tab"><img src="../../../img/icStoreW.png" alt=""></button>
+        </form>
+        <button type="submit" class="tab"><img src="../../../img/icCartW.png" alt=""></button>
+    </nav>
+    <div class="pesquisa">
+        <form method="get" action="/pesquisar">
+            <input type="text" name="term" id="term">
+            <button id="btnPesquisar" type="submit">Pesquisar</button>
+        </form>
+
+    </div>
+    <nav>
+        <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
+    </nav>
+</header>
 
 <body>
-    <header id="top">
-        <a href="#"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
-        <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
-        <nav>
-            <form action="/login" method="post">
-                <button type="submit" class="tab"><img src="../../../img/icStoreW.png" alt=""></button>
-            </form>
-            <button type="submit" class="tab"><img src="../../../img/icCartW.png" alt=""></button>
-        </nav>
-        <div class="pesquisa">
-            <form method="get" action="/pesquisar">
-                <input type="text" name="term" id="term">
-                <button type="submit">Pesquisar</button>
-            </form>
 
-        </div>
-        <nav>
-            <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
-        </nav>
-    </header>
 
     <main>
         <h2 class="titulo">Produtos em destaque</h2>
@@ -38,7 +39,7 @@
                 <% result.forEach(function(item) { %>
                     <% if (count < limit) { %>
                         <div class="product">
-                            <img src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
+                            <img id="foto_produto" src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
                             <h3>
                                 <%= item.nome_prod %>
                             </h3>
@@ -75,7 +76,8 @@
 
                                     <% result.forEach(function(item) { %>
                                         <div class="product">
-                                            <img src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
+                                            <img id="foto_produto" src="../img/<%= item.imagem_prod %>"
+                                                alt="Foto do produto">
                                             <h3>
                                                 <%= item.nome_prod %>
                                             </h3>
@@ -119,6 +121,6 @@
     <a class="aboutus" href="/sobrenos">Desenvolvedores do projeto </a>
 </footer>
 
-<script src="script.js"></script>
+<script src="js/produtos.js"></script>
 
 </html>
