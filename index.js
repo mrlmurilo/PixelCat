@@ -115,12 +115,14 @@ app.post('/home', function (req, res) {
 
 
 app.post('/homeL', function (req, res) {
+    const globalEmail = req.session.globalEmail;
+
     con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
         if (err) {
             console.error('Erro ao executar a consulta:', err);
             res.status(500).send('Erro ao recuperar os produtos');
         } else {
-            res.render('pages/produtos', { result: result });
+            res.render('pages/produtos', { result: result, globalEmail: globalEmail });
         }
     });
 });
@@ -176,44 +178,65 @@ app.post('/add', function (req, res) {
     var plataforma_prod = req.body.plataforma_prod;
     var quantidade_prod = req.body.quantidade_prod;
     var imagem_prod = req.body.imagem_prod;
-    var product = { id_prod: id_prod, nome_prod: nome_prod, preco_prod: preco_prod, precoDesconto_prod: precoDesconto_prod, plataforma_prod: plataforma_prod, quantidade_prod: quantidade_prod, imagem_prod: imagem_prod }
-
+    var product = {
+      id_prod: id_prod,
+      nome_prod: nome_prod,
+      preco_prod: preco_prod,
+      precoDesconto_prod: precoDesconto_prod,
+      plataforma_prod: plataforma_prod,
+      quantidade_prod: quantidade_prod,
+      imagem_prod: imagem_prod
+    }
+  
     if (globalEmail) {
-        const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
-        const insertItemQuery = `INSERT INTO ${cartTable} (id_prod, nome_prod, preco_prod, precoDesconto_prod, plataforma_prod, quantidade_prod, imagem_prod) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-        const itemValues = [id_prod, nome_prod, preco_prod, precoDesconto_prod, plataforma_prod, quantidade_prod, imagem_prod];
-
-        con.query(insertItemQuery, itemValues, (err, result) => {
-            if (err) {
+      const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
+      const selectItemQuery = `SELECT * FROM ${cartTable} WHERE id_prod = ${id_prod}`;
+      con.query(selectItemQuery, (err, result) => {
+        if (err) {
+          console.error('Erro ao verificar o item no carrinho:', err);
+          res.status(500).send('Erro ao verificar o item no carrinho');
+        } else {
+          if (result.length > 0) {
+            // O item já está no carrinho, atualize a quantidade
+            const updateQuantityQuery = `UPDATE ${cartTable} SET quantidade_prod = quantidade_prod + 1 WHERE id_prod = ${id_prod}`;
+            con.query(updateQuantityQuery, (err) => {
+              if (err) {
+                console.error('Erro ao atualizar a quantidade do item no carrinho:', err);
+                res.status(500).send('Erro ao atualizar a quantidade do item no carrinho');
+              } else {
+                console.log('Quantidade do item atualizada com sucesso');
+                res.redirect('/carrinho');
+              }
+            });
+          } else {
+            // O item não está no carrinho, insira como um novo item
+            const insertItemQuery = `INSERT INTO ${cartTable} (id_prod, nome_prod, preco_prod, precoDesconto_prod, plataforma_prod, quantidade_prod, imagem_prod) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+            const itemValues = [
+              id_prod,
+              nome_prod,
+              preco_prod,
+              precoDesconto_prod,
+              plataforma_prod,
+              quantidade_prod,
+              imagem_prod
+            ];
+  
+            con.query(insertItemQuery, itemValues, (err, result) => {
+              if (err) {
                 console.error('Erro ao adicionar item ao carrinho:', err);
                 res.status(500).send('Erro ao adicionar item ao carrinho');
-            } else {
+              } else {
                 console.log('Item adicionado ao carrinho com sucesso');
                 res.redirect('/carrinho');
-            }
-        });
+              }
+            });
+          }
+        }
+      });
     } else {
-        res.redirect('/');
+      res.redirect('/');
     }
-    
-    
-    // if (req.session.cart) {
-    //     var cart = req.session.cart;
-
-    //     if (!isProductInCart(cart, id_prod)) {
-    //         cart.push(product);
-    //     }
-    // } else {
-    //     req.session.cart = [product];
-    //     var cart = req.session.cart;
-    // }
-
-    // //calcular o total
-    // calculateTotal(cart, req);
-
-    // res.redirect('/carrinho');
-
-});
+  });
 
 app.get('/carrinho', function (req, res) {
     if (globalEmail) {
@@ -253,16 +276,23 @@ app.get('/view_carrinho', function (req, res) {
 
 app.post('/remove_product', function (req, res) {
     var id_prod = req.body.id_prod;
-    var cart = req.session.cart;
 
-    for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id_prod == id_prod) {
-            cart.splice(cart.indexOf(i), 1);
-        }
-    }
-    //recalcular
-    calculateTotal(cart, req);
-    res.redirect('/carrinho');
+  if (globalEmail) {
+    const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
+    const removeItemQuery = `DELETE FROM ${cartTable} WHERE id_prod = ?`;
+
+    con.query(removeItemQuery, [id_prod], (err, result) => {
+      if (err) {
+        console.error('Erro ao remover item do carrinho:', err);
+        res.status(500).send('Erro ao remover item do carrinho');
+      } else {
+        console.log('Item removido do carrinho com sucesso');
+        res.redirect('/carrinho');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 // Increase quantity
@@ -304,28 +334,23 @@ app.post('/decrease', function (req, res) {
   
 
 app.get('/checkout', function (req, res) {
-    var totalQuantity = req.session.cart.reduce(function (acc, item) {
-        return acc + parseInt(item.quantidade_prod);
-    }, 0);
-
-    req.session.cart.forEach(function (item) {
-        var quantidadeProdutos = parseInt(item.quantidade_prod);
-
-        if (quantidadeProdutos > 0) {
-            var query = "UPDATE produto SET estoque_prod = estoque_prod - ? WHERE nome_prod = ?";
-            con.query(query, [quantidadeProdutos, item.nome_prod], function (err, result) {
-                if (err) {
-                    console.error("Erro ao atualizar o estoque do produto", item.nome_prod, err);
-                } else {
-                    console.log("Estoque do produto", item.nome_prod, "atualizado com sucesso");
-                }
-            });
-        }
-    });
-
-    res.render('pages/checkout', { totalQuantity: totalQuantity, cart: req.session.cart });
-    req.session.cart = [];
-    req.session.total = 0;
+    if (globalEmail) {
+        const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
+        const selectCartItemsQuery = `SELECT * FROM ${cartTable}`;
+    
+        con.query(selectCartItemsQuery, (err, result) => {
+          if (err) {
+            console.error('Erro ao recuperar itens do carrinho:', err);
+            res.status(500).send('Erro ao recuperar itens do carrinho');
+          } else {
+            const cartItems = result;
+    
+            res.render('pages/checkout', { cart: cartItems });
+          }
+        });
+      } else {
+        res.redirect('/');
+      }
 });
 
 

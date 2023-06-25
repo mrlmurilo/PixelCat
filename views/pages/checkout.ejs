@@ -13,7 +13,7 @@
         <% const randomIndex = Math.floor(Math.random() * chars.length); %>
         <% return chars[randomIndex]; %>
       <% } %>
-      
+    
       <% function generateKey() { %>
         <% let key = ''; %>
         <% for (let i = 0; i < 3; i++) { %>
@@ -26,25 +26,35 @@
         <% } %>
         <% return key; %>
       <% } %>
-      
+    
       <div class="card">
-      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-        <i class="checkmark">✓</i>
-      </div>
-        <h1>Sucesso!
-        </h1> 
+        <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+          <i class="checkmark">✓</i>
+        </div>
+        <h1>Sucesso!</h1> 
         <p>Obrigado por realizar a compra conosco! Aqui estão as chaves dos jogos comprados:</p>
         <ul>
+          <% var groupedItems = {}; %>
           <% cart.forEach(function(item) { %>
+            <% if (!groupedItems[item.nome_prod]) { %>
+              <% groupedItems[item.nome_prod] = []; %>
+            <% } %>
             <% for (var i = 0; i < item.quantidade_prod; i++) { %>
-              <li style="list-style: none; font-family: sans-serif;">
-                <h3><%= item.nome_prod %></h3>
-                <p><%= generateKey() %></p>
-              </li>
+              <% groupedItems[item.nome_prod].push(generateKey()); %>
             <% } %>
           <% }) %>
+          <% Object.keys(groupedItems).forEach(function(itemName) { %>
+            <li style="list-style: none; font-family: sans-serif;">
+              <h3><%= itemName %></h3>
+              <ul>
+                <% groupedItems[itemName].forEach(function(key) { %>
+                  <li><%= key %></li>
+                <% }) %>
+              </ul>
+            </li>
+          <% }) %>
         </ul>
-        <form method="post" action="/login">
+        <form method="post" action="/homeL">
           <button type="submit">Voltar para o menu</button>
         </form>
       </div>
