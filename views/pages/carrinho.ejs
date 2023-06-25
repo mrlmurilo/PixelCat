@@ -49,12 +49,14 @@
                 </p>
                 <p>
                   
-                    <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                    
                     <form method="post" action="/decrease">
+                      <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
                     <input type="submit" value="-" name="decrease" class="btnQtd">
                   </form>
                     <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
                     <form method="post" action="/increase">
+                      <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
                     <input type="submit" value="+" name="increase" class="btnQtd">
                   </form>
                   

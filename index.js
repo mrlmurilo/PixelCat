@@ -265,67 +265,42 @@ app.post('/remove_product', function (req, res) {
     res.redirect('/carrinho');
 });
 
+// Increase quantity
 app.post('/increase', function (req, res) {
     const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
-    const itemId = req.body.itemId;
+    const itemId = req.body.id_prod;
   
-    const selectQuantityQuery = `SELECT quantidade_prod FROM ${cartTable} WHERE id_prod = ${itemId}`;
-    con.query(selectQuantityQuery, (err, rows) => {
+    // Update the quantity in the database
+    const updateQuantityQuery = `UPDATE ${cartTable} SET quantidade_prod = quantidade_prod + 1 WHERE id_prod = ${itemId}`;
+    con.query(updateQuantityQuery, (err) => {
       if (err) {
-        console.error('Erro ao recuperar quantidade do produto:', err);
-        res.status(500).send('Erro ao recuperar quantidade do produto');
+        console.error('Erro ao atualizar a quantidade do item:', err);
+        res.status(500).send('Erro ao atualizar a quantidade do item');
       } else {
-        if (rows.length === 0) {
-          res.status(404).send('Produto não encontrado no carrinho');
-        } else {
-          const currentQuantity = rows[0].quantidade_prod;
-  
-          // Update the quantity in the database
-          const newQuantity = currentQuantity + 1;
-          const updateQuantityQuery = `UPDATE ${cartTable} SET quantidade_prod = ${newQuantity} WHERE id_prod = ${itemId}`;
-          con.query(updateQuantityQuery, (err) => {
-            if (err) {
-              console.error('Erro ao atualizar a quantidade do item:', err);
-              res.status(500).send('Erro ao atualizar a quantidade do item');
-            } else {
-              res.redirect('/carrinho');
-            }
-          });
-        }
+        res.redirect('/carrinho');
       }
     });
   });
+  
 
+// Decrease quantity
 // Decrease quantity
 app.post('/decrease', function (req, res) {
     const cartTable = globalEmail.replace(/[^a-zA-Z0-9]/g, '') + 'carrinho';
     const itemId = req.body.id_prod;
   
-    const selectQuantityQuery = `SELECT quantidade_prod FROM ${cartTable} WHERE id_prod = ${itemId}`;
-    con.query(selectQuantityQuery, (err, rows) => {
+    // Update the quantity in the database
+    const updateQuantityQuery = `UPDATE ${cartTable} SET quantidade_prod = quantidade_prod - 1 WHERE id_prod = ${itemId}`;
+    con.query(updateQuantityQuery, (err) => {
       if (err) {
-        console.error('Erro ao recuperar quantidade do produto:', err);
-        res.status(500).send('Erro ao recuperar quantidade do produto');
+        console.error('Erro ao atualizar a quantidade do item:', err);
+        res.status(500).send('Erro ao atualizar a quantidade do item');
       } else {
-        if (rows.length === 0) {
-          res.status(404).send('Produto não encontrado no carrinho');
-        } else {
-          const currentQuantity = rows[0].quantidade_prod;
-  
-          const newQuantity = currentQuantity > 0 ? currentQuantity - 1 : 0;
-          const updateQuantityQuery = `UPDATE ${cartTable} SET quantidade_prod = ${newQuantity} WHERE id_prod = ${itemId}`;
-          con.query(updateQuantityQuery, (err) => {
-            if (err) {
-              console.error('Erro ao atualizar a quantidade do item:', err);
-              res.status(500).send('Erro ao atualizar a quantidade do item');
-            } else {
-              res.redirect('/carrinho');
-            }
-          });
-        }
+        res.redirect('/carrinho');
       }
     });
   });
+  
   
 
 app.get('/checkout', function (req, res) {
