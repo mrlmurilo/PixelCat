@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var session = require('express-session');
 var app = express();
 
-let globalEmail = '';
+var globalEmail = '';
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');

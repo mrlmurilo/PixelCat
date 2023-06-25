@@ -53,10 +53,6 @@ nav .tab {
     transition: 0.3s;
     margin-right: 50px;
 }
-nav .tab img {
-    width: 35px;
-    transition: 0.3s;
-}
 
 nav .tab:hover {
     animation: shake 0.5s;
@@ -77,9 +73,6 @@ header.small .logo {
     width: 50px;
 }
 
-header.small .tab img {
-    width: 30px;
-}
 header.small nav {
     margin-top: 10px;
 }
@@ -155,8 +148,10 @@ h3 {
 
 .itemImg {
     width: 80px;
-    height: 80px;
+    height: 100px;
     margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
 }
 
 .items {
@@ -185,7 +180,7 @@ h3 {
 
 .remove {
     background-color: rgb(166, 4, 4);
-    width: 20px;
+    width: 40px;
     margin-left: 10px;
     margin-top: 10px;
     text-align: center;
