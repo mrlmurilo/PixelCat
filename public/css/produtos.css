@@ -3,6 +3,13 @@
     src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
 }
 
+#top {
+    align-items: center;
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 96%;
+}
 
 nav {
     margin-left: 50px;
@@ -43,79 +50,17 @@ body {
     margin-top: 10%;
 }
 
-header #term {
-    margin-top: 40px;
-    margin-right: 300px;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    width: 600px;
-    margin-left: 150px;
-}
-
-#btnPesquisar {
-    display: none;
-}
-
-header.small {
-    height: 60px;
-}
-
-header.small .logo {
-    width: 50px;
-}
-
-header.small .tab img {
-    width: 30px;
-}
-
-header.small nav {
-    margin-top: 10px;
-}
-
-header.small #user {
-    margin-left: 550px;
-}
-
-header.small #query {
-    margin-top: 10px;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    width: 600px;
-    margin-left: 200px;
-    margin-right: 100px;
-}
-
-body.scroll-down .header {
-    height: 50px;
-}
-
-header {
-    display: flex;
-    background-color: rgb(151, 29, 49);
-    color: #fff;
-    padding: 15px;
-    height: 120px;
-    margin-top: 0px;
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    transition: height 0.3s ease-in-out;
-}
-
 main {
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-gap: 0px;
+    justify-items: center;
 }
 
 .product {
-    display: inline-block;
-    width: 270px;
-    height: 500px;
-    margin: 10px;
+    width: 350px;
+    margin-left: 50px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.45) 6px 6px 10px;
     border-radius: 10px;
@@ -193,4 +138,33 @@ nav .tab {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+/*ADM CSS START*/
+.admpanel {
+    position: fixed;
+    background-color: #6b1222;
+    color: white;
+    width: 200px;
+    height: 100px;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+    text-align: center;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px black;
+}
+
+.admpanel a {
+    color: #fff;
+    background-color: #1d1d1d;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.admpanel a:hover {
+    font-size: 16px;
 }

@@ -277,13 +277,4 @@ nav .tab {
     transition: 0.3s;
     cursor: pointer;
 }
-
 /*End form css*/
-
-/*ADM CSS START*/
-.admpanel {
-    position: fixed;
-    background-color: #202020;
-    color: white;
-    width: 100px;
-}

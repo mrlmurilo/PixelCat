@@ -2,27 +2,34 @@
 <html lang="PT-BR">
 
 <head>
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/aboutus.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
 </head>
 
-<header id="top">
-    <a href="#"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
-    <a href="#"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
-    <nav>
-        <a href="#" class="tab"><img src="../../../img/icHomeW.png" alt=""></a>
-        <a href="#" class="tab"><img src="../../../img/icStoreW.png" alt=""></a>
-        <a href="#" class="tab" id="openCartButton"><img src="../../../img/icCartW.png" alt=""></a>
-    </nav>
-    <div class="pesquisa">
-        <input type="search" name="query" id="query">
+<div class="topSection">
+    <header id="top">
+        <form method="post" action="/homeL">
+            <button type="submit"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></button>
+            <button type="submit"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></button>
+        </form>
+        <div class="pesquisa">
+            <form method="get" action="/pesquisar">
+                <input type="text" name="term" id="term">
+                <button id="btnPesquisar" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </header>
+    <div id="exit">
+        <a href="/sobrenos" class="exit"><img src="img/about.png" alt=""></a>
+        <br><br><br>
+        <a href="/" class="exit"><img src="img/exit.png" alt=""></a>
+        <br><br><br>
+        <a href="/view_carrinho"><img src="img/icCartW.png" alt=""></a>
     </div>
-    <nav>
-        <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
-    </nav>
-</header>
+</div>
 
 <body>
     <h1>Quem somos?</h1>

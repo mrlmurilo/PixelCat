@@ -5,34 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrinho</title>
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/carrinho.css">
 </head>
 
 <body>
 
-  <header id="top">
-    <a href="#"><img src="img/LogoRosa.png" alt="Gato" class="logo"></a>
-    <a href="#"><img src="img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
-    <nav>
-      <a href="#" class="tab"><img src="img/icHomeW.png" alt=""></a>
-      <a href="#" class="tab"><img src="img/icStoreW.png" alt=""></a>
-      <a href="#" class="tab" id="openCartButton"><img src="img/icCartW.png" alt=""></a>
-    </nav>
-    <div class="pesquisa">
-      <input type="text" name="query" id="query">
+  <div class="topSection">
+    <header id="top">
+      <form method="post" action="/homeL">
+        <button type="submit"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></button>
+        <button type="submit"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></button>
+      </form>
+      <div class="pesquisa">
+        <form method="get" action="/pesquisar">
+          <input type="text" name="term" id="term">
+          <button id="btnPesquisar" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </header>
+    <div id="exit">
+      <a href="/sobrenos" class="exit"><img src="img/about.png" alt=""></a>
+      <br><br><br>
+      <a href="/" class="exit"><img src="img/exit.png" alt=""></a>
     </div>
-    <nav>
-      <a href="#" class="tab"><img src="img/icUserW.png" alt="" id="user"></a>
-    </nav>
-  </header>
+  </div>
 
-  <div class="wrap cf">
+  <h1>Meu Carrinho</h1>
+
+<div class="wrap cf">
     <div class="heading cf">
       <h1>Carrinho</h1>
     </div>
     <div class="cart">
       <ul class="cartWrap">
-        <% cart.forEach(function(item) { %>
+        <% items.forEach(function(item) { %>
           <li class="items even">
             <div class="infoWrap">
               <div class="cartSection">
@@ -41,35 +48,38 @@
                   <%= item.nome_prod %>
                 </p>
                 <p>
-                <form method="post" action="/edit">
-                  <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
-                  <input type="submit" value="-" name="decrease" class="btnQtd">
-                  <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
-                  <input type="submit" value="+" name="increase" class="btnQtd">
-                </form>
+                  
+                    <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                    <form method="post" action="/decrease">
+                    <input type="submit" value="-" name="decrease" class="btnQtd">
+                  </form>
+                    <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
+                    <form method="post" action="/increase">
+                    <input type="submit" value="+" name="increase" class="btnQtd">
+                  </form>
+                  
                 </p>
-                <% if(item.precoDesconto_prod){ %>
-                  <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %>
-                  </p>
-                  <% }else{ %>
-                    <p>R$<%= item.preco_prod * item.quantidade_prod %>
-                    </p>
-                    <% } %>
+                <% if (item.precoDesconto_prod) { %>
+                  <p>R$<%= (item.precoDesconto_prod * item.quantidade_prod).toFixed(2) %></p>
+                <% } else { %>
+                  <p>R$<%= (item.preco_prod * item.quantidade_prod).toFixed(2) %></p>
+                <% } %>
               </div>
               <div class="cartSection removeWrap">
                 <form method="post" action="/remove_product">
-
                   <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
                   <button type="submit" class="remove" value="Remover">X</button>
                 </form>
               </div>
             </div>
           </li>
-          <% }) %>
+        <% }) %>
       </ul>
     </div>
     <div class="subtotal cf">
-      Total:<br> <input type="text" class="price" maxlength="9" value="R$<%= total %>">
+      Total:<br>
+      <input type="text" class="price" maxlength="9" value="R$<%= Number(total).toFixed(2) %>">
+
     </div>
     <br>
   </div>

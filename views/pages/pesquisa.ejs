@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pesquisa.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,19 +11,25 @@
 </head>
 
 <body>
-    <header id="top">
-        <a href="/homeL"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
-        <a href="/homeL"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
-        <nav>
-            <a href="/homeL" class="tab"><img src="../../../img/icStoreW.png" alt=""></a>
-            <a href="/carrinho" class="tab"><img src="../../../img/icCartW.png" alt=""></a>
-        </nav>
-        <div class="pesquisa">
-            <form method="get" action="/pesquisar">
-                <input type="text" name="term" id="term">
-                <button id="btnPesquisar" type="submit">Pesquisar</button>
+    <div class="topSection">
+        <header id="top">
+            <form method="post" action="/homeL">
+                <button type="submit"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></button>
+                <button type="submit"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></button>
+            </form>
+            <div class="pesquisa">
+                <form method="get" action="/pesquisar">
+                    <input type="text" name="term" id="term">
+                    <button id="btnPesquisar" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </header>
+        <div id="exit">
+            <a href="/sobrenos" class="exit"><img src="img/about.png" alt=""></a>
+            <br><br><br>
+            <a href="/" class="exit"><img src="img/exit.png" alt=""></a>
         </div>
-    </header>
+    </div>
 
     <main>
         <h2 class="titulo">Resultados da pesquisa para "<%= searchTerm %>":</h2>
