@@ -91,35 +91,6 @@ window.addEventListener('scroll', function () {
   lastScrollPosition = currentScrollPosition;
 });
 
-const openCartButton = document.getElementById('openCartButton');
-const closeCartButton = document.getElementById('closeCartButton');
-const cartPopup = document.getElementById('cartPopup');
-const cartItemsList = document.getElementById('cartItemsList');
-
-openCartButton.addEventListener('click', function() {
-  cartPopup.style.display = 'block';
-});
-
-closeCartButton.addEventListener('click', function() {
-  cartPopup.style.display = 'none';
-});
-
-function addToCart() {
-  const productName = document.querySelector('.product-title').textContent;
-  const productPrice = document.querySelector('.product-price').textContent;
-  const productQuantity = document.getElementById('quantity-input').value;
-
-  const item = {
-    name: productName,
-    price: productPrice,
-    quantity: productQuantity
-  };
-
-  const li = document.createElement('li');
-  li.textContent = `${item.name} - ${item.price} x ${item.quantity}`;
-  cartItemsList.appendChild(li);
-}
-
 
 
 

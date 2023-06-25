@@ -54,23 +54,60 @@ app.get('/', function (req, res) {
 });
 
 app.post('/home', function (req, res) {
-    con.query("SELECT `email_cliente`, `senha_cliente` FROM `cliente`", (err, result) => {
-
-        if (err) {
-            console.error('Erro ao logar:', err);
-            res.status(500).send('Erro ao realizar o login');
-        } else {
-            con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
-                if (err) {
-                    console.error('Erro ao executar a consulta:', err);
-                    res.status(500).send('Erro ao recuperar os produtos');
+    var email_cliente = req.body.email_cliente;
+    var senha_cliente = req.body.senha_cliente;
+  
+    console.log('Email do cliente:', email_cliente);
+    console.log('Senha do cliente:', senha_cliente);
+  
+    const loginQuery = "SELECT `email_cliente`, `senha_cliente` FROM `pixelcat`.`cliente` WHERE `email_cliente` = ? AND `senha_cliente` = ?";
+    const roleQuery = "SELECT `adm_cliente` FROM `pixelcat`.`cliente` WHERE `email_cliente` = ?";
+  
+    con.query(loginQuery, [email_cliente, senha_cliente], (err, loginResult) => {
+      if (err) {
+        console.error('Erro ao logar:', err);
+        res.status(500).send('Erro ao realizar o login');
+      } else {
+        console.log('Sucesso');
+  
+        if (loginResult.length > 0) {
+          con.query(roleQuery, [email_cliente], (err, roleResult) => {
+            if (err) {
+              console.error('Erro ao executar a consulta de perfil:', err);
+              res.status(500).send('Erro ao recuperar o perfil do cliente');
+            } else {
+              console.log('Sucesso ao consultar o perfil do cliente');
+  
+              if (roleResult.length > 0) {
+                if (roleResult[0].adm_cliente === 'Sim') {
+                  console.log('Cliente é um funcionário');
+                  res.redirect('/funcionario');
                 } else {
-                    res.render('pages/produtos', { result: result });
+                  console.log('Cliente não é um funcionário');
+                  con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
+                    if (err) {
+                      console.error('Erro ao executar a consulta:', err);
+                      res.status(500).send('Erro ao recuperar os produtos');
+                    } else {
+                      console.log('Sucesso!');
+                      res.render('pages/produtos', { result: result });
+                    }
+                  });
                 }
-            });
+              } else {
+                console.log('Perfil do cliente não encontrado');
+                res.status(401).send('Perfil do cliente não encontrado');
+              }
+            }
+          });
+        } else {
+          console.log('Credenciais inválidas');
+          res.status(401).send('Credenciais inválidas');
         }
+      }
     });
-});
+  });
+  
 
 app.post('/homeL', function(req, res) {
     con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
@@ -79,6 +116,17 @@ app.post('/homeL', function(req, res) {
             res.status(500).send('Erro ao recuperar os produtos');
         } else {
             res.render('pages/produtos', { result: result });
+        }
+    });
+});
+
+app.post('/homeF', function(req, res) {
+    con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
+        if (err) {
+            console.error('Erro ao executar a consulta:', err);
+            res.status(500).send('Erro ao recuperar os produtos');
+        } else {
+            res.render('pages/produtosF', { result: result });
         }
     });
 });

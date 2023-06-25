@@ -38,11 +38,7 @@ body {
     color: white;
 }
 
-.titulo {
-    font-family: Retro_Gaming;
-    margin-top: 10%;
-}
-
+/*start header css*/
 header #term {
     margin-top: 40px;
     margin-right: 300px;
@@ -107,14 +103,18 @@ header {
     transition: height 0.3s ease-in-out;
 }
 
+/*end header css*/
+
 main {
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
+    grid-gap: 10px;
+    justify-items: center;
 }
 
 .product {
-    display: inline-block;
     width: 470px;
-    height: 700px;
     margin: 10px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.45) 6px 6px 10px;
@@ -123,6 +123,13 @@ main {
     margin-right: 50px;
     margin-bottom: 60px;
 }
+
+.product .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
 
 h2 {
     margin-top: 60px;
@@ -194,7 +201,7 @@ nav .tab {
 }
 
 /*Start form css*/
-form {
+.funcMenu {
     background: linear-gradient(to bottom, #222, #333);
     background-color: rgba(58, 58, 58, 0.445);
     margin-left: 30%;
@@ -212,7 +219,7 @@ form {
     padding-bottom: 50px;
 }
 
-form input {
+.funcMenu input {
     background-color: rgba(31, 30, 37, 0.773);
     color: white;
     outline: none;
@@ -224,14 +231,14 @@ form input {
     transition: 0.5s;
 }
 
-form input:focus {
+.funcMenu input:focus {
     transform: scale(1.1);
     background-color: rgb(75, 74, 83);
     transition: 0.5s;
     font-size: large;
 }
 
-form textarea {
+.funcMenu textarea {
     background-color: rgba(31, 30, 37, 0.773);
     color: white;
     outline: none;
@@ -243,14 +250,14 @@ form textarea {
     transition: 0.5s;
 }
 
-form textarea:focus {
+.funcMenu textarea:focus {
     transform: scale(1.1);
     background-color: rgb(75, 74, 83);
     transition: 0.5s;
     font-size: large;
 }
 
-form button {
+.funcMenu button {
     color: white;
     width: 100%;
     padding: 15px;
@@ -264,10 +271,19 @@ form button {
     transition: 0.3s;
 }
 
-form button:hover {
+.funcMenu button:hover {
     transform: scale(1.1);
     background-color: #7e1829;
     transition: 0.3s;
     cursor: pointer;
 }
+
 /*End form css*/
+
+/*ADM CSS START*/
+.admpanel {
+    position: fixed;
+    background-color: #202020;
+    color: white;
+    width: 100px;
+}

@@ -9,8 +9,26 @@
 </head>
 
 <body>
+    <main>
+
+    <header id="top">
+        <a href="/homeL"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></a>
+        <a href="/homeL"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></a>
+        <nav>
+            <form method="post" action="/homeF">
+                <button type="submit" class="tab"><img src="../../../img/icStoreW.png" alt=""></button>
+            </form>
+        </nav>
+        <div class="pesquisa">
+            <form method="get" action="/pesquisar">
+                <input type="text" name="term" id="term">
+                <button id="btnPesquisar" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </header>
+
     <h2 class="titulo">Produtos</h2>
-<center>
+
     <% result.forEach(function(item) { %>
         <div class="product">
             <img id="foto_produto" src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
@@ -20,16 +38,16 @@
                 <p style="text-decoration: line-through;">R$<%= item.preco_prod%></p>
                 <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
                 <h4><%= item.descricao_prod %></h4>
-                <% }else{ %>
-                    <h3>R$<%= item.preco_prod %></h3>
-                    <h4><%= item.descricao_prod %></h4>
-                    <% } %>
-                        </h3>
+            <% } else { %>
+                <h3>R$<%= item.preco_prod %></h3>
+                <h4><%= item.descricao_prod %></h4>
+            <% } %>
         </div>
         <% }) %>
-    </center>
 
-        <form method="post" action="/funcionarioAdd">
+    </main>
+
+        <form method="post" action="/funcionarioAdd" class="funcMenu">
             <h2>Adicionar Produto</h2>
             <h3>Nome do produto: *</h3>
             <input type="text" name="nome_prod" placeholder="Nome do Jogo">
@@ -48,14 +66,14 @@
             <br><br>
             <button type="submit">Adicionar</button>
         </form>
-        <form method="post" action="/funcionarioRemove">
+        <form method="post" action="/funcionarioRemove" class="funcMenu">
             <h2>Remover Produto</h2>
             <h3>ID do produto a ser removido:</h3>
             <input type="text" name="id_prod" placeholder="ID do produto">
             <br><br>
             <button type="submit">Remover</button>
         </form>
-        <form method="post" action="/funcionarioEdit">
+        <form method="post" action="/funcionarioEdit" class="funcMenu">
             <h3>ID do produto a ser editado:</h3>
             <input type="text" name="id_prod" placeholder="ID do produto">
         
