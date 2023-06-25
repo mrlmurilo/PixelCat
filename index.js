@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
     res.render('pages/login');
 });
 
-app.post('/login', function (req, res) {
+app.post('/home', function (req, res) {
     con.query("SELECT `email_cliente`, `senha_cliente` FROM `cliente`", (err, result) => {
 
         if (err) {
@@ -68,6 +68,17 @@ app.post('/login', function (req, res) {
                     res.render('pages/produtos', { result: result });
                 }
             });
+        }
+    });
+});
+
+app.post('/homeL', function(req, res) {
+    con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
+        if (err) {
+            console.error('Erro ao executar a consulta:', err);
+            res.status(500).send('Erro ao recuperar os produtos');
+        } else {
+            res.render('pages/produtos', { result: result });
         }
     });
 });
@@ -219,3 +230,77 @@ app.get('/pesquisar', function (req, res) {
   app.get('/sobrenos', function(req,res) {
     res.render('pages/aboutus');
   });
+
+  app.get('/funcionario', function (req, res) {
+
+    con.query("SELECT `id_prod`, `nome_prod`, `preco_prod`, `precoDesconto_prod`, `estoque_prod`, `descricao_prod`, `plataforma_prod`, `imagem_prod` FROM `pixelcat`.`produto`", (err, result) => {
+        if (err) {
+            console.error('Erro ao executar a consulta:', err);
+            res.status(500).send('Erro ao recuperar os produtos');
+        } else {
+            res.render('pages/funcionario', { result: result });
+        }
+    });
+
+  });
+
+  app.post('/funcionarioAdd', function (req, res) {
+    var nome_prod = req.body.nome_prod;
+    var preco_prod = req.body.preco_prod;
+    var precoDesconto_prod = req.body.precoDesconto_prod;
+    var estoque_prod = req.body.estoque_prod;
+    var descricao_prod = req.body.descricao_prod;
+    var plataforma_prod = req.body.plataforma_prod;
+    var imagem_prod = req.body.imagem_prod;
+
+    // Execute a query para inserir os dados no banco de dados
+    var query = "INSERT INTO produto (nome_prod, preco_prod, precoDesconto_prod, estoque_prod, descricao_prod, plataforma_prod, imagem_prod) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    con.query(query, [nome_prod, preco_prod, precoDesconto_prod, estoque_prod, descricao_prod, plataforma_prod, imagem_prod], (err, result) => {
+        if (err) {
+            console.error('Erro ao inserir os dados:', err);
+            res.status(500).send('Erro ao adicionar o produto');
+        } else {
+            console.log('Produto adicionado com sucesso');
+            res.redirect('/funcionario');
+        }
+    });
+});
+
+app.post('/funcionarioRemove', function (req, res) {
+    var id_prod = req.body.id_prod;
+
+    // Execute a query para remover o produto do banco de dados
+    var query = "DELETE FROM produto WHERE id_prod = ?";
+    con.query(query, [id_prod], (err, result) => {
+        if (err) {
+            console.error('Erro ao remover o produto:', err);
+            res.status(500).send('Erro ao remover o produto');
+        } else {
+            console.log('Produto removido com sucesso');
+            res.redirect('/funcionario');
+        }
+    });
+});
+
+app.post('/funcionarioEdit', function (req, res) {
+    var id_prod = req.body.id_prod;
+    var nome_prod = req.body.nome_prod;
+    var preco_prod = req.body.preco_prod;
+    var precoDesconto_prod = req.body.precoDesconto_prod;
+    var plataforma_prod = req.body.plataforma_prod;
+    var estoque_prod = req.body.estoque_prod;
+    var descricao_prod = req.body.descricao_prod;
+    var imagem_prod = req.body.imagem_prod;
+
+    // Execute a query para atualizar o produto no banco de dados
+    var query = "UPDATE produto SET nome_prod = ?, preco_prod = ?, precoDesconto_prod = ?, plataforma_prod = ?, estoque_prod = ?, descricao_prod = ?, imagem_prod = ? WHERE id_prod = ?";
+    con.query(query, [nome_prod, preco_prod, precoDesconto_prod, plataforma_prod, estoque_prod, descricao_prod, imagem_prod, id_prod], (err, result) => {
+        if (err) {
+            console.error('Erro ao atualizar o produto:', err);
+            res.status(500).send('Erro ao atualizar o produto');
+        } else {
+            console.log('Produto atualizado com sucesso');
+            res.redirect('/funcionario');
+        }
+    });
+});

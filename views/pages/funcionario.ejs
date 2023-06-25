@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/funcionarios.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionário</title>
+</head>
+
+<body>
+    <h2 class="titulo">Produtos</h2>
+<center>
+    <% result.forEach(function(item) { %>
+        <div class="product">
+            <img id="foto_produto" src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
+            <h3><%= item.nome_prod %></h3>
+            <p>ID: <%= item.id_prod %></p>
+            <% if(item.precoDesconto_prod){ %>
+                <p style="text-decoration: line-through;">R$<%= item.preco_prod%></p>
+                <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
+                <h4><%= item.descricao_prod %></h4>
+                <% }else{ %>
+                    <h3>R$<%= item.preco_prod %></h3>
+                    <h4><%= item.descricao_prod %></h4>
+                    <% } %>
+                        </h3>
+        </div>
+        <% }) %>
+    </center>
+
+        <form method="post" action="/funcionarioAdd">
+            <h2>Adicionar Produto</h2>
+            <h3>Nome do produto: *</h3>
+            <input type="text" name="nome_prod" placeholder="Nome do Jogo">
+            <h3>Preço: *</h3>
+            R$<input type="text" name="preco_prod" id="" placeholder="123.12">
+            <h3>Preço com desconto:</h3>
+            R$<input type="text" name="precoDesconto_prod" id="" placeholder="123.12">
+            <h3>Estoque: *</h3>
+            <input type="text" name="estoque_prod" id="" placeholder="20">
+            <h3>Descrição do produto: *</h3>
+            <textarea name="descricao_prod" id="" cols="30" rows="5" placeholder="Descrição do Produto"></textarea>
+            <h3>Plataforma: *</h3>
+            <input type="text" name="plataforma_prod" id="" placeholder="Steam, Xbox">
+            <h3>Imagem: *</h3>
+            <input type="text" name="imagem_prod" placeholder="nomedojogo.png" id="">
+            <br><br>
+            <button type="submit">Adicionar</button>
+        </form>
+        <form method="post" action="/funcionarioRemove">
+            <h2>Remover Produto</h2>
+            <h3>ID do produto a ser removido:</h3>
+            <input type="text" name="id_prod" placeholder="ID do produto">
+            <br><br>
+            <button type="submit">Remover</button>
+        </form>
+        <form method="post" action="/funcionarioEdit">
+            <h3>ID do produto a ser editado:</h3>
+            <input type="text" name="id_prod" placeholder="ID do produto">
+        
+            <h3>Novo nome do produto:</h3>
+            <input type="text" name="nome_prod" placeholder="Novo nome do produto">
+        
+            <h3>Novo preço:</h3>
+            R$<input type="text" name="preco_prod" placeholder="Novo preço">
+        
+            <h3>Novo preço com desconto:</h3>
+            R$<input type="text" name="precoDesconto_prod" placeholder="Novo preço com desconto">
+        
+            <h3>Nova plataforma:</h3>
+            <input type="text" name="plataforma_prod" placeholder="Nova plataforma">
+        
+            <h3>Novo estoque:</h3>
+            <input type="text" name="estoque_prod" placeholder="Novo estoque">
+        
+            <h3>Nova descrição:</h3>
+            <textarea name="descricao_prod" cols="30" rows="5" placeholder="Nova descrição"></textarea>
+
+            <h3>Nova imagem:</h3>
+            <input type="text" name="imagem_prod" placeholder="Nova imagem">
+        
+            <br><br>
+            <button type="submit">Editar</button>
+        </form>
+</body>
+
+</html>
