@@ -276,7 +276,7 @@ h3 {
     color: white;
   }
 
-  form
+  form[action="/checkout"]
   input[type="text"],
   input[type="email"],
   input[type="tel"],
