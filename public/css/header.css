@@ -131,3 +131,29 @@ header {
 .exit {
     float: right;
 }
+
+@media (max-width: 920px) {
+
+    header {
+        width: 900px;
+    }
+
+    .titulo {
+        padding-top: 80px;
+    }
+    
+    img[alt="PixelCat"] {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 0;
+    }
+
+    #term {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+}

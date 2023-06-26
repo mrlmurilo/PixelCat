@@ -95,7 +95,7 @@ p {
 }
 
 /* Estilos para dispositivos móveis */
-@media (max-width: 600px) {
+@media (max-width: 920px) {
     .container {
         flex-direction: column;
         align-items: center;
@@ -108,13 +108,15 @@ p {
     }
 
     .formulario-login {
-        width: 80%;
+        width: 70%;
         padding: 30px;
         margin-left: 0;
     }
 
-    .formulario-login input,
-    button {
-        width: 60%;
+    .formulario-login input {
+        width: 94%;
+    }
+    .formulario-login button {
+        width: 100%;
     }
 }

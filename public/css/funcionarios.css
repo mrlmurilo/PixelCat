@@ -39,68 +39,15 @@ body {
 }
 
 /*start header css*/
-header #term {
-    margin-top: 40px;
-    margin-right: 300px;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    width: 600px;
-    margin-left: 150px;
-}
 
-#btnPesquisar {
-    display: none;
+#exit {
+    right: 0;
 }
-
-header.small {
-    height: 60px;
-}
-
-header.small .logo {
-    width: 50px;
-}
-
-header.small .tab img {
-    width: 30px;
-}
-
-header.small nav {
-    margin-top: 10px;
-}
-
-header.small #user {
-    margin-left: 550px;
-}
-
-header.small #query {
-    margin-top: 10px;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    width: 600px;
-    margin-left: 200px;
-    margin-right: 100px;
-}
-
-body.scroll-down .header {
-    height: 50px;
-}
-
-header {
-    display: flex;
-    background-color: rgb(151, 29, 49);
-    color: #fff;
-    padding: 15px;
-    height: 120px;
-    margin-top: 0px;
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    transition: height 0.3s ease-in-out;
+.exit {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 /*end header css*/
@@ -278,3 +225,9 @@ nav .tab {
     cursor: pointer;
 }
 /*End form css*/
+
+@media (max-width: 820px) {
+    .funcMenu {
+        margin-left: 160px;
+    }
+  }

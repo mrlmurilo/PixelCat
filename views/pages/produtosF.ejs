@@ -11,7 +11,7 @@
 </head>
 <div class="topSection">
     <header id="top">
-        <form method="post" action="/homeL">
+        <form method="post" action="/homeF">
             <button type="submit"><img src="../img/LogoRosa.png" alt="Gato" class="logo"></button>
             <button type="submit"><img src="../img/TextoLogoRosa.png" alt="PixelCat" class="logo"></button>
         </form>
@@ -23,6 +23,8 @@
         </div>
     </header>
     <div id="exit">
+        <a href="funcionario" class="exit"> <img src="img/admin.png" alt=""></a>
+        <br><br><br>
         <a href="/carrinho" class="exit"><img src="img/icCartW.png" alt="UserIcon"></a>
         <br><br><br>
         <a href="/sobrenos" class="exit"><img src="img/about.png" alt=""></a>
@@ -32,18 +34,12 @@
 </div>
 
 </div>
-<nav>
-    <a href="#" class="tab"><img src="../../../img/icUserW.png" alt="" id="user"></a>
-</nav>
-
-</header>
 
 <body>
 
+    <br><br><br><br>
+    <h2 class="titulo">Bem vindo! Algumas novidades para você:</h2>
     <main>
-
-
-        <h2 class="titulo">Produtos em destaque</h2>
         <% var limit=5; %>
             <% var count=0; %>
                 <% result.forEach(function(item) { %>
@@ -81,46 +77,48 @@
                         <% count++; %>
                             <% } %>
                                 <% }) %>
+    </main>
 
-                                    <h2 class="titulo">Adicionados recentemente</h2>
 
-                                    <% result.forEach(function(item) { %>
-                                        <div class="product">
-                                            <img id="foto_produto" src="../img/<%= item.imagem_prod %>"
-                                                alt="Foto do produto">
-                                            <h3>
-                                                <%= item.nome_prod %>
-                                            </h3>
-                                            <p>Plataforma: <%= item.plataforma_prod %>
-                                            </p>
-                                            <% if(item.precoDesconto_prod){ %>
-                                                <p style="text-decoration: line-through;">R$<%= item.preco_prod%>
-                                                </p>
-                                                <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
-                                                <% }else{ %>
-                                                    <h3>R$<%= item.preco_prod %>
-                                                    </h3>
-                                                    <% } %>
-                                                        </h3>
-                                                        <form action="/add" method="post">
-                                                            <input type="hidden" name="id_prod"
-                                                                value="<%= item.id_prod %>">
-                                                            <input type="hidden" name="nome_prod"
-                                                                value="<%= item.nome_prod %>">
-                                                            <input type="hidden" name="preco_prod"
-                                                                value="<%= item.preco_prod %>">
-                                                            <input type="hidden" name="precoDesconto_prod"
-                                                                value="<%= item.precoDesconto_prod %>">
-                                                            <input type="hidden" name="plataforma_prod"
-                                                                value="<%= item.plataforma_prod %>">
-                                                            <input type="hidden" name="imagem_prod"
-                                                                value="<%= item.imagem_prod %>">
-                                                            <input type="hidden" name="quantidade_prod" value="1">
-                                                            <input type="submit" value="Adicionar ao carrinho"
-                                                                name="botao" class="botao">
-                                                        </form>
-                                        </div>
-                                        <% }) %>
+    <h2 class="titulo">Adicionados recentemente</h2>
+
+    <main>
+
+        <% result.forEach(function(item) { %>
+            <div class="product">
+                <img id="foto_produto" src="../img/<%= item.imagem_prod %>" alt="Foto do produto">
+                <h3>
+                    <%= item.nome_prod %>
+                </h3>
+                <p>Plataforma: <%= item.plataforma_prod %>
+                </p>
+                <% if(item.precoDesconto_prod){ %>
+                    <p style="text-decoration: line-through;">R$<%= item.preco_prod%>
+                    </p>
+                    <h3><strong>R$<%= item.precoDesconto_prod %></strong></h3>
+                    <p>
+                        <%= item.descricao_prod %>
+                    </p>
+                    <% }else{ %>
+                        <h3>R$<%= item.preco_prod %>
+                        </h3>
+                        <p>
+                            <%= item.descricao_prod %>
+                        </p>
+                        <% } %>
+                            </h3>
+                            <form action="/add" method="post">
+                                <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                                <input type="hidden" name="nome_prod" value="<%= item.nome_prod %>">
+                                <input type="hidden" name="preco_prod" value="<%= item.preco_prod %>">
+                                <input type="hidden" name="precoDesconto_prod" value="<%= item.precoDesconto_prod %>">
+                                <input type="hidden" name="plataforma_prod" value="<%= item.plataforma_prod %>">
+                                <input type="hidden" name="imagem_prod" value="<%= item.imagem_prod %>">
+                                <input type="hidden" name="quantidade_prod" value="1">
+                                <input type="submit" value="Adicionar ao carrinho" name="botao" class="botao">
+                            </form>
+            </div>
+            <% }) %>
 
     </main>
 
