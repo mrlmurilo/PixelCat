@@ -1,5 +1,7 @@
 body {
     overflow-x: hidden;
+    background-image: linear-gradient(to bottom,#181818, #333), url('../img/bgloja.jpg');
+    background-size: cover;
 }
 
 #top {

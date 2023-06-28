@@ -346,6 +346,12 @@ app.get('/checkout', function (req, res) {
             const cartItems = result;
     
             res.render('pages/checkout', { cart: cartItems });
+            con.query('DELETE FROM ' + cartTable + ';', (err, result) => {
+                if(err) {
+                    console.error('Erro ao deletar itens:', err);
+                    req.status(500).send('Erro ao resetar carrinho');
+                }
+            });
           }
         });
       } else {

@@ -1,32 +1,3 @@
-@font-face {
-    font-family: 'Retro_Gaming';
-    src: url('../Fontes/Retro\ Gaming.ttf') format('truetype');
-}
-
-
-nav {
-    margin-left: 50px;
-    margin-top: 35px;
-    transition: 0.3s;
-}
-
-nav .tab {
-    text-decoration: none;
-    font-size: 20px;
-    transition: 0.3s;
-    margin-right: 50px;
-}
-
-nav .tab img {
-    width: 50px;
-    transition: 0.3s;
-}
-
-nav .tab:hover {
-    animation: shake 0.5s;
-    animation-iteration-count: 1;
-}
-
 body {
     background-color: #202020;
     font-family: Arial, sans-serif;
@@ -55,9 +26,10 @@ body {
 main {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     grid-gap: 10px;
     justify-items: center;
+     grid-auto-flow: dense;
 }
 
 .product {
